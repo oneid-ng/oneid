@@ -1,0 +1,57 @@
+services:
+  # ── Stellar Quickstart (local network with Soroban RPC + Friendbot) ────────
+  stellar:
+    image: stellar/quickstart:latest
+    container_name: oneid-stellar
+    ports:
+      - "8000:8000"
+    command: >
+      --local
+      --enable rpc,lab
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "curl",
+          "-sf",
+          "http://localhost:8000/soroban/rpc",
+          "-X",
+          "POST",
+          "-H",
+          "Content-Type: application/json",
+          "-d",
+          '{"jsonrpc":"2.0","id":1,"method":"getHealth"}',
+        ]
+      interval: 5s
+      timeout: 10s
+      retries: 30
+      start_period: 30s
+    networks:
+      - oneid
+
+  # ── PostgreSQL 16 ──────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16
+    container_name: oneid-postgres
+    environment:
+      POSTGRES_USER: oneid
+      POSTGRES_PASSWORD: oneid
+      POSTGRES_DB: oneid
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oneid -d oneid"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - oneid
+
+volumes:
+  postgres_data:
+
+networks:
+  oneid:
+    driver: bridge
