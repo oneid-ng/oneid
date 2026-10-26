@@ -40,6 +40,10 @@ test-results/
 .DS_Store
 Thumbs.db
 
+# Rust / Cargo build output
+contracts/target/
+target/
+
 # Editor
 .idea/
 *.swp

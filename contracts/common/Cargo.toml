@@ -1,0 +1,14 @@
+[package]
+name = "oneid-common"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["lib"]
+
+[dependencies]
+soroban-sdk = { version = "21.7.7", features = [] }
+
+# See hello-world/Cargo.toml note on testutils incompatibility.
+[dev-dependencies]

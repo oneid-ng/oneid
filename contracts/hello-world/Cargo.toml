@@ -1,0 +1,21 @@
+[package]
+name = "hello-world"
+version = "0.1.0"
+edition = "2021"
+publish = false
+# SCAFFOLD — remove on Day 2 when real contracts are added.
+# Exists only to prove stellar contract build works end-to-end.
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+soroban-sdk = { version = "21.7.7", features = [] }
+oneid-common = { path = "../common" }
+
+# NOTE: soroban-sdk 21.x testutils pulls in ed25519-dalek v3 which has a
+# known incompatibility with Rust stable >=1.82 (soroban-env-host 21.2.1
+# issue). Testutils are therefore not used in this scaffold.
+# Proper contract tests with testutils will be introduced in Day 2 once the
+# SDK version incompatibility is resolved (see docs/architecture/adr/).
+[dev-dependencies]
