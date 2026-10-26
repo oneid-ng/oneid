@@ -1,0 +1,71 @@
+name: Contracts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "contracts/**"
+      - "rust-toolchain.toml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "contracts/**"
+      - "rust-toolchain.toml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contracts:
+    name: fmt → clippy → test → build WASM
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust (from rust-toolchain.toml)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          # rust-toolchain.toml is respected automatically by cargo;
+          # this step adds the wasm targets explicitly.
+          targets: wasm32v1-none,wasm32-unknown-unknown
+
+      - name: Cache Cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            contracts/target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('contracts/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Install Stellar CLI
+        run: cargo install --locked stellar-cli --version 28.0.0
+
+      - name: cargo fmt --check
+        working-directory: contracts
+        run: cargo fmt --all -- --check
+
+      - name: cargo clippy -D warnings
+        working-directory: contracts
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: cargo test
+        working-directory: contracts
+        run: cargo test --workspace
+
+      - name: stellar contract build
+        working-directory: contracts
+        run: stellar contract build
+
+      - name: Upload WASM artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: soroban-wasm
+          path: contracts/target/wasm32v1-none/release/*.wasm
+          retention-days: 7

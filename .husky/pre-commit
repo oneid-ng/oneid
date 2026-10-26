@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# pre-commit: format + lint staged files, secret scan
+pnpm exec lint-staged

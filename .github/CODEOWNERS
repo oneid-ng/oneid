@@ -1,0 +1,46 @@
+# CODEOWNERS — ONEiD monorepo
+# README §26: Team and ownership
+# GitHub usernames are placeholders — update with real handles before going live.
+
+# Global fallback — project lead signs off on anything not covered below
+*                               @friday-abah
+
+# Scope, risks, regulatory, release sign-off
+README.md                       @friday-abah
+SECURITY.md                     @friday-abah
+docs/privacy/                   @friday-abah
+
+# Backend, contracts and VC packages (Daniel Omodiagbe)
+contracts/                      @daniel-omodiagbe
+apps/api/                       @daniel-omodiagbe
+packages/contracts-client/      @daniel-omodiagbe
+packages/vc/                    @daniel-omodiagbe
+
+# Requirements, personas, acceptance criteria, roadmap (Hassan Magaji)
+docs/runbooks/                  @hassan-magaji
+docs/api/                       @hassan-magaji
+
+# Frontend, infra, CI/CD, Docker (Zayyad Muhammad Mukhtar)
+apps/web/                       @zayyad-mukhtar
+apps/mock-anchor/               @zayyad-mukhtar
+apps/mock-fintech/              @zayyad-mukhtar
+infra/                          @zayyad-mukhtar
+.github/                        @zayyad-mukhtar
+turbo.json                      @zayyad-mukhtar
+
+# UI/UX, design tokens, component library (Hassana Abdullahi)
+packages/ui/                    @hassana-abdullahi
+docs/design/                    @hassana-abdullahi
+
+# Shared packages (Daniel + Zayyad co-own)
+packages/shared/                @daniel-omodiagbe @zayyad-mukhtar
+packages/stellar/               @daniel-omodiagbe @zayyad-mukhtar
+packages/tsconfig/              @zayyad-mukhtar
+packages/eslint-config/         @zayyad-mukhtar
+packages/test-utils/            @daniel-omodiagbe
+
+# Testing support, bug triage, documentation (Yasin Muhammad Ahmad)
+docs/                           @yasin-ahmad
+
+# ADRs require project lead + the relevant owner
+docs/architecture/adr/          @friday-abah @daniel-omodiagbe @zayyad-mukhtar
