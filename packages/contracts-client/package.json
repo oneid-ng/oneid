@@ -1,0 +1,31 @@
+{
+  "name": "@oneid/contracts-client",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Generated TypeScript bindings + typed wrappers for Soroban contracts",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "pnpm exec eslint src",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "13.3.0",
+    "@oneid/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@oneid/eslint-config": "workspace:*",
+    "@oneid/tsconfig": "workspace:*",
+    "typescript": "5.8.3",
+    "vitest": "3.2.4"
+  }
+}

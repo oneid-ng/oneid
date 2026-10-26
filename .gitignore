@@ -1,0 +1,47 @@
+# ONEiD — .gitignore
+
+# Node
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+.next/
+out/
+build/
+
+# Turbo cache
+.turbo/
+
+# Environment files — NEVER commit real secrets
+.env
+.env.local
+.env.*.local
+*.secret
+
+# Stellar CLI key files
+.stellar/
+
+# Database
+*.sqlite
+*.db
+
+# Deployment outputs (generated — do NOT commit for mainnet, safe for local demo)
+deployments/local.json
+deployments/testnet.json
+
+# Test and coverage
+coverage/
+playwright-report/
+test-results/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+*.swp
+*.swo
+.vscode/settings.json

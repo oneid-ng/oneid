@@ -1,0 +1,36 @@
+{
+  "name": "@oneid/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ONEiD citizen wallet and issuer/verifier/admin portals",
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start --port 3000",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "echo 'NOT IMPLEMENTED YET — Playwright e2e arrives in Phase 4'",
+    "test:a11y": "echo 'NOT IMPLEMENTED YET — axe/Lighthouse CI arrives in Phase 4'"
+  },
+  "dependencies": {
+    "@oneid/shared": "workspace:*",
+    "@oneid/ui": "workspace:*",
+    "next": "15.3.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@oneid/eslint-config": "workspace:*",
+    "@oneid/tsconfig": "workspace:*",
+    "@next/eslint-plugin-next": "15.3.3",
+    "@typescript-eslint/eslint-plugin": "8.32.1",
+    "@typescript-eslint/parser": "8.32.1",
+    "@types/node": "22.15.21",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "typescript": "5.8.3",
+    "vitest": "3.2.4"
+  }
+}

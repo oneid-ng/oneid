@@ -1,0 +1,27 @@
+{
+  "name": "@oneid/mock-anchor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Demo anchor — SEP-1/10/12/24-style on/off-ramp onboarding demo",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "lint": "pnpm exec eslint src",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@oneid/shared": "workspace:*",
+    "fastify": "5.3.3",
+    "@fastify/sensible": "6.0.3"
+  },
+  "devDependencies": {
+    "@oneid/eslint-config": "workspace:*",
+    "@oneid/tsconfig": "workspace:*",
+    "tsx": "4.19.4",
+    "typescript": "5.8.3",
+    "vitest": "3.2.4"
+  }
+}

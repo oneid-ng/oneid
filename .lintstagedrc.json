@@ -1,0 +1,11 @@
+{
+  "*.{ts,tsx,js,cjs,mjs}": [
+    "pnpm exec prettier --write"
+  ],
+  "*.{json,md,yml,yaml}": [
+    "pnpm exec prettier --write"
+  ],
+  "*.rs": [
+    "rustfmt"
+  ]
+}

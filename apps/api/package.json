@@ -1,0 +1,31 @@
+{
+  "name": "@oneid/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ONEiD Fastify API — KYC, issuance, consent, corrections, indexer hooks",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "lint": "pnpm exec eslint src",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "db:migrate": "echo 'NOT IMPLEMENTED YET — DB migrations arrive with schema workstream'",
+    "db:seed": "echo 'NOT IMPLEMENTED YET — DB seed arrives with schema workstream'",
+    "db:studio": "echo 'NOT IMPLEMENTED YET — DB studio arrives with schema workstream'"
+  },
+  "dependencies": {
+    "@oneid/shared": "workspace:*",
+    "@oneid/stellar": "workspace:*",
+    "fastify": "5.3.3",
+    "@fastify/sensible": "6.0.3"
+  },
+  "devDependencies": {
+    "@oneid/eslint-config": "workspace:*",
+    "@oneid/tsconfig": "workspace:*",
+    "tsx": "4.19.4",
+    "typescript": "5.8.3",
+    "vitest": "3.2.4"
+  }
+}

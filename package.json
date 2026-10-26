@@ -1,0 +1,55 @@
+{
+  "name": "oneid",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Reusable, consent-based KYC for Nigeria on Stellar",
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test --concurrency=4",
+    "test:e2e": "turbo run test:e2e",
+    "test:a11y": "turbo run test:a11y",
+    "contracts:build": "cd contracts && stellar contract build",
+    "contracts:test": "cd contracts && cargo test --workspace",
+    "contracts:fmt": "cd contracts && cargo fmt --all -- --check && cargo clippy --all-targets -- -D warnings",
+    "contracts:deploy:local": "infra/scripts/deploy-contracts.sh local",
+    "contracts:deploy:testnet": "infra/scripts/deploy-contracts.sh testnet",
+    "contracts:bindings": "infra/scripts/gen-bindings.sh",
+    "db:migrate": "pnpm --filter @oneid/api db:migrate",
+    "db:seed": "pnpm --filter @oneid/api db:seed",
+    "db:studio": "pnpm --filter @oneid/api db:studio",
+    "chain:seed": "infra/scripts/chain-seed.sh",
+    "demo:up": "infra/scripts/demo-up.sh",
+    "demo:down": "infra/scripts/demo-down.sh",
+    "demo:reset": "infra/scripts/demo-reset.sh",
+    "docs:api": "echo 'NOT IMPLEMENTED YET — will regenerate OpenAPI docs once API routes exist'",
+    "prepare": "husky",
+    "prepare": "husky"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.8.1",
+    "@commitlint/config-conventional": "19.8.1",
+    "@typescript-eslint/eslint-plugin": "8.32.1",
+    "@typescript-eslint/parser": "8.32.1",
+    "eslint": "9.27.0",
+    "husky": "9.1.7",
+    "lint-staged": "16.1.2",
+    "prettier": "3.5.3",
+    "turbo": "2.5.4",
+    "typescript": "5.8.3"
+  }
+}
