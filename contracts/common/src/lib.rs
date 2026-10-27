@@ -21,6 +21,8 @@ pub enum IssuerRegistryError {
     AlreadyInitialised = 4,
     /// Invalid address.
     InvalidAddress = 5,
+    /// Contract not initialised.
+    NotInitialised = 6,
 }
 
 // ── Credential Status errors ───────────────────────────────────────────────
