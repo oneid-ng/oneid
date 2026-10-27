@@ -5,6 +5,7 @@ members = [
     "hello-world",
     "issuer-registry",
     "credential-status",
+    "consent-registry",
 ]
 
 [profile.release]

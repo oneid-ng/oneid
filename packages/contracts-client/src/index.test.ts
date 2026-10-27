@@ -4,6 +4,7 @@ import {
   loadSeededRegistry,
   getIssuerRegistryClient,
   getCredentialStatusClient,
+  getConsentRegistryClient,
   isActiveIssuer,
   isActiveVerifier,
 } from "./index.js";
@@ -62,6 +63,9 @@ describe("@oneid/contracts-client", () => {
 
     const credClient = getCredentialStatusClient();
     expect(credClient.options.contractId).toBe("C_CRED_456");
+
+    const consentClient = getConsentRegistryClient();
+    expect(consentClient.options.contractId).toBe("C_CONSENT");
   });
 
   it("reads seeded registry correctly", () => {

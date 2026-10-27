@@ -67,6 +67,10 @@ pub enum ConsentRegistryError {
     NotHolder = 204,
     /// expiry_ts must be in the future.
     InvalidExpiry = 205,
+    /// Contract already initialised.
+    AlreadyInitialised = 206,
+    /// Contract not initialised.
+    NotInitialised = 207,
 }
 
 // ── Correction Tracker errors ──────────────────────────────────────────────

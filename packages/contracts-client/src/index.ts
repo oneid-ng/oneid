@@ -7,8 +7,9 @@ import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import * as IssuerRegistryBindings from "./generated/issuer-registry/src/index.js";
 import * as CredentialStatusBindings from "./generated/credential-status/src/index.js";
+import * as ConsentRegistryBindings from "./generated/consent-registry/src/index.js";
 
-export { IssuerRegistryBindings, CredentialStatusBindings };
+export { IssuerRegistryBindings, CredentialStatusBindings, ConsentRegistryBindings };
 
 export interface DeployedContracts {
   issuerRegistry: string;
@@ -139,6 +140,32 @@ export function getCredentialStatusClient(options?: {
     : loadContractIds();
   return new CredentialStatusBindings.Client({
     contractId: ids.credentialStatus,
+    networkPassphrase:
+      options?.networkPassphrase ||
+      process.env["STELLAR_NETWORK_PASSPHRASE"] ||
+      "Standalone Network ; February 2017",
+    rpcUrl:
+      options?.rpcUrl ||
+      process.env["STELLAR_RPC_URL"] ||
+      "http://localhost:8000/soroban/rpc",
+    ...(options?.publicKey ? { publicKey: options.publicKey } : {}),
+  });
+}
+
+/**
+ * Typed wrapper to get a ConsentRegistry client instance.
+ */
+export function getConsentRegistryClient(options?: {
+  contractId?: string;
+  networkPassphrase?: string;
+  rpcUrl?: string;
+  publicKey?: string;
+}): ConsentRegistryBindings.Client {
+  const ids = options?.contractId
+    ? { consentRegistry: options.contractId }
+    : loadContractIds();
+  return new ConsentRegistryBindings.Client({
+    contractId: ids.consentRegistry,
     networkPassphrase:
       options?.networkPassphrase ||
       process.env["STELLAR_NETWORK_PASSPHRASE"] ||

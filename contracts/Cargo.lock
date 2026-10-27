@@ -229,6 +229,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "consent-registry"
+version = "0.1.0"
+dependencies = [
+ "issuer-registry",
+ "oneid-common",
+ "soroban-sdk",
+]
+
+[[package]]
 name = "const-oid"
 version = "0.9.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
