@@ -8,8 +8,14 @@ import { resolve } from "node:path";
 import * as IssuerRegistryBindings from "./generated/issuer-registry/src/index.js";
 import * as CredentialStatusBindings from "./generated/credential-status/src/index.js";
 import * as ConsentRegistryBindings from "./generated/consent-registry/src/index.js";
+import * as CorrectionTrackerBindings from "./generated/correction-tracker/src/index.js";
 
-export { IssuerRegistryBindings, CredentialStatusBindings, ConsentRegistryBindings };
+export {
+  IssuerRegistryBindings,
+  CredentialStatusBindings,
+  ConsentRegistryBindings,
+  CorrectionTrackerBindings,
+};
 
 export interface DeployedContracts {
   issuerRegistry: string;
@@ -166,6 +172,32 @@ export function getConsentRegistryClient(options?: {
     : loadContractIds();
   return new ConsentRegistryBindings.Client({
     contractId: ids.consentRegistry,
+    networkPassphrase:
+      options?.networkPassphrase ||
+      process.env["STELLAR_NETWORK_PASSPHRASE"] ||
+      "Standalone Network ; February 2017",
+    rpcUrl:
+      options?.rpcUrl ||
+      process.env["STELLAR_RPC_URL"] ||
+      "http://localhost:8000/soroban/rpc",
+    ...(options?.publicKey ? { publicKey: options.publicKey } : {}),
+  });
+}
+
+/**
+ * Typed wrapper to get a CorrectionTracker client instance.
+ */
+export function getCorrectionTrackerClient(options?: {
+  contractId?: string;
+  networkPassphrase?: string;
+  rpcUrl?: string;
+  publicKey?: string;
+}): CorrectionTrackerBindings.Client {
+  const ids = options?.contractId
+    ? { correctionTracker: options.contractId }
+    : loadContractIds();
+  return new CorrectionTrackerBindings.Client({
+    contractId: ids.correctionTracker,
     networkPassphrase:
       options?.networkPassphrase ||
       process.env["STELLAR_NETWORK_PASSPHRASE"] ||

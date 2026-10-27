@@ -30,6 +30,7 @@ WASM_DIR="${REPO_ROOT}/contracts/target/wasm32v1-none/release"
 ISSUER_REG_WASM="${WASM_DIR}/issuer_registry.wasm"
 CRED_STATUS_WASM="${WASM_DIR}/credential_status.wasm"
 CONSENT_REG_WASM="${WASM_DIR}/consent_registry.wasm"
+CORR_TRACK_WASM="${WASM_DIR}/correction_tracker.wasm"
 
 # Step 2: Determine RPC endpoint
 if [[ "${NETWORK}" == "testnet" ]]; then
@@ -55,6 +56,8 @@ CORR_TRACK_ID="NOT_DEPLOYED_YET"
 if [[ -f "${DEPLOYMENTS_FILE}" ]]; then
   ISSUER_REG_ID=$(grep -o '"issuerRegistry": "[^"]*"' "${DEPLOYMENTS_FILE}" | cut -d'"' -f4 || true)
   CRED_STATUS_ID=$(grep -o '"credentialStatus": "[^"]*"' "${DEPLOYMENTS_FILE}" | cut -d'"' -f4 || true)
+  CONSENT_REG_ID=$(grep -o '"consentRegistry": "[^"]*"' "${DEPLOYMENTS_FILE}" | cut -d'"' -f4 || true)
+  CORR_TRACK_ID=$(grep -o '"correctionTracker": "[^"]*"' "${DEPLOYMENTS_FILE}" | cut -d'"' -f4 || true)
 fi
 
 if [[ "${RPC_HEALTHY}" == "true" ]]; then
@@ -94,6 +97,16 @@ if [[ "${RPC_HEALTHY}" == "true" ]]; then
       --network "${NETWORK}" \
       --ignore-checks 2>/dev/null || true)
   fi
+
+  # Deploy correction_tracker if not already deployed
+  if [[ -z "${CORR_TRACK_ID}" || "${CORR_TRACK_ID}" == "NOT_DEPLOYED_YET" || "${CORR_TRACK_ID}" =~ ^DEPLOY_FAILED ]]; then
+    echo "    Deploying correction-tracker ..."
+    CORR_TRACK_ID=$(stellar contract deploy \
+      --wasm "${CORR_TRACK_WASM}" \
+      --source admin \
+      --network "${NETWORK}" \
+      --ignore-checks 2>/dev/null || true)
+  fi
 fi
 
 # Fallback deterministic IDs for offline demo mode
@@ -108,6 +121,10 @@ fi
 
 if [[ -z "${CONSENT_REG_ID}" || "${CONSENT_REG_ID}" == "NOT_DEPLOYED_YET" || "${CONSENT_REG_ID}" =~ ^DEPLOY_FAILED ]]; then
   CONSENT_REG_ID="CC3KONEIDCONSENTREGISTRYLOCALDEMOCONTRACTID00000000000000"
+fi
+
+if [[ -z "${CORR_TRACK_ID}" || "${CORR_TRACK_ID}" == "NOT_DEPLOYED_YET" || "${CORR_TRACK_ID}" =~ ^DEPLOY_FAILED ]]; then
+  CORR_TRACK_ID="CD4KONEIDCORRECTIONTRACKERLOCALDEMOCONTRACTID000000000000"
 fi
 
 # Step 4: Write deployment manifest

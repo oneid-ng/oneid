@@ -89,6 +89,8 @@ pub enum CorrectionTrackerError {
     TooManyInstitutions = 303,
     /// Caller is not the holder.
     NotHolder = 304,
+    /// Empty institutions list.
+    EmptyInstitutions = 305,
 }
 
 // ── Shared constants ───────────────────────────────────────────────────────

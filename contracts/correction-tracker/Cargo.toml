@@ -1,0 +1,15 @@
+[package]
+name = "correction-tracker"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+soroban-sdk = { version = "21.7.7" }
+oneid-common = { path = "../common" }
+
+[dev-dependencies]
+soroban-sdk = { version = "21.7.7", features = ["testutils"] }

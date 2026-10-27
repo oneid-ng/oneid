@@ -6,6 +6,7 @@ members = [
     "issuer-registry",
     "credential-status",
     "consent-registry",
+    "correction-tracker",
 ]
 
 [profile.release]

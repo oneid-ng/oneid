@@ -16,7 +16,7 @@ echo "📜  gen-bindings — Generating TypeScript bindings for Soroban contract
 mkdir -p "${GENERATED_DIR}"
 
 # Map of wasm file basename (without .wasm) to output directory name
-CONTRACTS=("issuer_registry:issuer-registry" "credential_status:credential-status" "consent_registry:consent-registry")
+CONTRACTS=("issuer_registry:issuer-registry" "credential_status:credential-status" "consent_registry:consent-registry" "correction_tracker:correction-tracker")
 
 for ENTRY in "${CONTRACTS[@]}"; do
   WASM_NAME="${ENTRY%%:*}"
