@@ -4,6 +4,7 @@ members = [
     "common",
     "hello-world",
     "issuer-registry",
+    "credential-status",
 ]
 
 [profile.release]

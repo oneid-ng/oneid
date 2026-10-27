@@ -43,6 +43,10 @@ pub enum CredentialStatusError {
     NotOriginalIssuer = 104,
     /// expiry_ts must be in the future.
     InvalidExpiry = 105,
+    /// Contract already initialised.
+    AlreadyInitialised = 106,
+    /// Contract not initialised.
+    NotInitialised = 107,
 }
 
 // ── Consent Registry errors ────────────────────────────────────────────────
