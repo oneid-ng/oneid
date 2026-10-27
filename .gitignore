@@ -30,6 +30,7 @@ build/
 # Deployment outputs (generated — do NOT commit for mainnet, safe for local demo)
 deployments/local.json
 deployments/testnet.json
+deployments/seeded-*.json
 
 # Test and coverage
 coverage/

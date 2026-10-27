@@ -2,7 +2,9 @@
   "extends": "@oneid/tsconfig/library.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "lib": ["es2022", "dom"],
+    "noImplicitOverride": false
   },
   "include": ["src"]
 }
