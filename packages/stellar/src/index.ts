@@ -524,3 +524,103 @@ export async function fundAccount(
     throw mapSorobanErrorToApiCode(err);
   }
 }
+
+// ── High-level submitTransaction helper ────────────────────────────────────
+// Used by apps/api routes for common contract calls (README §14.5).
+
+export interface SubmitTxOptions {
+  rpc: SorobanRpc.Server;
+  network: NetworkConfig;
+  sourceKeypair: Keypair;
+  sponsorKeypair?: Keypair | undefined;
+  contractId: string;
+  method: string;
+  /** args ignored in MVP — use generated bindings for type-safe arg encoding */
+  args?: Record<string, unknown>;
+  idempotencyKey?: string;
+}
+
+/**
+ * Build, (optionally fee-bump), sign, and submit a Soroban contract call.
+ * Returns txHash and ledger. Uses submitWithRetryAndIdempotency internally.
+ *
+ * Note: full arg serialisation uses the generated TS bindings in
+ * @oneid/contracts-client. This wrapper is for routes that call simple
+ * methods where the contracts-client is available. For the MVP demo the
+ * raw buildAndSignContractCall with empty args is used (args encoding via
+ * the generated Client is done in the indexer and dedicated service layers).
+ */
+export async function submitTransaction(
+  opts: SubmitTxOptions,
+): Promise<TransactionResult> {
+  if (!opts.contractId) {
+    throw new StellarOperationError({
+      message: "Contract ID is empty. Run pnpm contracts:deploy:local first.",
+      code: "CHAIN_UNAVAILABLE",
+      httpStatus: 503,
+      retryable: false,
+    });
+  }
+
+  return submitWithRetryAndIdempotency(
+    async (): Promise<TransactionResult> => {
+      const tx = await buildAndSignContractCall({
+        contractId: opts.contractId,
+        method: opts.method,
+        args: [],
+        sourceKeypair: opts.sourceKeypair,
+        server: opts.rpc,
+        network: opts.network,
+      });
+
+      let signedTx: Transaction | FeeBumpTransaction = tx;
+      if (opts.sponsorKeypair) {
+        signedTx = wrapFeeBumpTransaction({
+          innerTx: tx,
+          sponsorKeypair: opts.sponsorKeypair,
+          networkPassphrase: opts.network.networkPassphrase,
+        });
+      }
+
+      const sendResult = await opts.rpc.sendTransaction(signedTx);
+
+      if (sendResult.status === "ERROR" || sendResult.status === "DUPLICATE") {
+        return {
+          status: "failed",
+          txHash: sendResult.hash,
+          error: new StellarOperationError({
+            message: `Send status: ${sendResult.status}`,
+            code: "CHAIN_TX_FAILED",
+            httpStatus: 502,
+            txHash: sendResult.hash,
+          }),
+        };
+      }
+
+      // Poll for confirmation (max 10 s)
+      let getResult = await opts.rpc.getTransaction(sendResult.hash);
+      let polls = 0;
+      while (
+        getResult.status === SorobanRpc.Api.GetTransactionStatus.NOT_FOUND &&
+        polls < 20
+      ) {
+        await new Promise((r) => setTimeout(r, 500));
+        getResult = await opts.rpc.getTransaction(sendResult.hash);
+        polls++;
+      }
+
+      const confirmed = getResult.status === SorobanRpc.Api.GetTransactionStatus.SUCCESS;
+      const failed = getResult.status === SorobanRpc.Api.GetTransactionStatus.FAILED;
+
+      return {
+        status: confirmed ? "confirmed" : failed ? "failed" : "pending",
+        txHash: sendResult.hash,
+        ledger:
+          "ledger" in getResult && typeof getResult.ledger === "number"
+            ? getResult.ledger
+            : undefined,
+      };
+    },
+    opts.idempotencyKey ? { idempotencyKey: opts.idempotencyKey } : {},
+  );
+}
