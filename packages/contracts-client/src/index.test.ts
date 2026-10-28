@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import {
   loadContractIds,
   loadSeededRegistry,
@@ -9,6 +9,59 @@ import {
   isActiveIssuer,
   isActiveVerifier,
 } from "./index.js";
+
+// ── Synthetic seeded-local.json fixture (used in CI without a live chain) ──
+const SYNTHETIC_SEEDED_LOCAL = {
+  network: "local",
+  adminAddress: "GADMINONEIDDEMOPLATFORMADMIN00000000000000000000000000000000",
+  issuerRegistryId: "CA7QONEIDISSUERREGISTRYLOCALDEMOCONTRACTID000000000000000000",
+  credentialStatusId: "CB2KONEIDCREDENTIALSTATUSLOCALDEMOCONTRACTID000000000000000",
+  entities: {
+    GISSUERONEIDDEMOISSUER0000000000000000000000000000000000000: {
+      address: "GISSUERONEIDDEMOISSUER0000000000000000000000000000000000000",
+      role: "Issuer",
+      name: "ONEiD Demo Issuer",
+      homeDomain: "issuer.demo.oneid.local",
+      status: "Active",
+      registeredAt: 1793110890,
+    },
+    GANCHORONEIDDEMOANCHOR0000000000000000000000000000000000000: {
+      address: "GANCHORONEIDDEMOANCHOR0000000000000000000000000000000000000",
+      role: "Verifier",
+      name: "Mock Anchor",
+      homeDomain: "anchor.demo.oneid.local",
+      status: "Active",
+      registeredAt: 1793110890,
+    },
+    GFINTECHONEIDDEMOFINTECH00000000000000000000000000000000000: {
+      address: "GFINTECHONEIDDEMOFINTECH00000000000000000000000000000000000",
+      role: "Verifier",
+      name: "Mock Fintech",
+      homeDomain: "fintech.demo.oneid.local",
+      status: "Active",
+      registeredAt: 1793110890,
+    },
+  },
+};
+
+// Mock node:fs so seeded-registry tests work in CI without a deployed chain
+vi.mock("node:fs", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("node:fs")>();
+  return {
+    ...actual,
+    existsSync: (p: string) => {
+      if (String(p).includes("seeded-local")) return true;
+      return actual.existsSync(p);
+    },
+    readFileSync: (p: Parameters<typeof actual.readFileSync>[0], ...args: unknown[]) => {
+      if (String(p).includes("seeded-local")) {
+        return JSON.stringify(SYNTHETIC_SEEDED_LOCAL);
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return (actual.readFileSync as any)(p, ...args);
+    },
+  };
+});
 
 describe("@oneid/contracts-client", () => {
   let saved: Record<string, string | undefined>;
@@ -35,7 +88,6 @@ describe("@oneid/contracts-client", () => {
     delete process.env["CREDENTIAL_STATUS_ID"];
     delete process.env["CONSENT_REGISTRY_ID"];
     delete process.env["CORRECTION_TRACKER_ID"];
-    // Test with non-existent network
     expect(() => loadContractIds("non-existent-network-xyz")).toThrow(
       "Missing contract IDs",
     );
@@ -96,17 +148,12 @@ describe("@oneid/contracts-client", () => {
     const issuer = entities.find((e) => e.role === "Issuer")!;
     const verifier = entities.find((e) => e.role === "Verifier")!;
 
-    // Demo issuer is active issuer
     expect(await isActiveIssuer(issuer.address, "local")).toBe(true);
-    // Demo issuer is NOT active verifier
     expect(await isActiveVerifier(issuer.address, "local")).toBe(false);
 
-    // Verifier is active verifier
     expect(await isActiveVerifier(verifier.address, "local")).toBe(true);
-    // Verifier is NOT active issuer
     expect(await isActiveIssuer(verifier.address, "local")).toBe(false);
 
-    // Random address is neither
     expect(await isActiveIssuer("GUNREGISTERED0000000000", "local")).toBe(false);
     expect(await isActiveVerifier("GUNREGISTERED0000000000", "local")).toBe(false);
   });

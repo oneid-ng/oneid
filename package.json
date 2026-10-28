@@ -31,7 +31,6 @@
     "demo:down": "infra/scripts/demo-down.sh",
     "demo:reset": "infra/scripts/demo-reset.sh",
     "docs:api": "echo 'NOT IMPLEMENTED YET — will regenerate OpenAPI docs once API routes exist'",
-    "prepare": "husky",
     "prepare": "husky"
   },
   "pnpm": {
