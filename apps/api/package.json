@@ -11,19 +11,36 @@
     "lint": "pnpm exec eslint src",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
-    "db:migrate": "echo 'NOT IMPLEMENTED YET — DB migrations arrive with schema workstream'",
-    "db:seed": "echo 'NOT IMPLEMENTED YET — DB seed arrives with schema workstream'",
-    "db:studio": "echo 'NOT IMPLEMENTED YET — DB studio arrives with schema workstream'"
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "node --import tsx/esm src/db/migrate.ts",
+    "db:seed": "node --import tsx/esm src/db/seed.ts",
+    "db:validate-seed": "node --import tsx/esm src/db/validate-seed.ts",
+    "db:studio": "drizzle-kit studio",
+    "indexer:rebuild": "node --import tsx/esm src/indexer/rebuild.ts",
+    "audit:verify": "node --import tsx/esm src/indexer/verify-audit.ts"
   },
   "dependencies": {
+    "@fastify/cookie": "11.0.2",
+    "@fastify/jwt": "9.1.0",
+    "@fastify/sensible": "6.0.3",
+    "@fastify/session": "11.0.2",
+    "@oneid/contracts-client": "workspace:*",
     "@oneid/shared": "workspace:*",
     "@oneid/stellar": "workspace:*",
+    "@oneid/vc": "workspace:*",
+    "@simplewebauthn/server": "13.1.1",
+    "@stellar/stellar-sdk": "13.3.0",
+    "drizzle-orm": "0.38.4",
     "fastify": "5.3.3",
-    "@fastify/sensible": "6.0.3"
+    "fastify-plugin": "5.0.1",
+    "postgres": "3.4.5",
+    "zod": "3.25.51"
   },
   "devDependencies": {
     "@oneid/eslint-config": "workspace:*",
     "@oneid/tsconfig": "workspace:*",
+    "@types/node": "22.15.21",
+    "drizzle-kit": "0.30.4",
     "tsx": "4.19.4",
     "typescript": "5.8.3",
     "vitest": "3.2.4"
