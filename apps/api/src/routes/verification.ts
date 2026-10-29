@@ -219,7 +219,9 @@ export async function verificationRoutes(app: FastifyInstance): Promise<void> {
           if (new Date() > cons.expires_at) return false;
           return true;
         },
-        consentReceiptHash: targetConsentRecord?.receipt_hash,
+        ...(targetConsentRecord?.receipt_hash
+          ? { consentReceiptHash: targetConsentRecord.receipt_hash }
+          : {}),
       });
 
       if (!verifyResult.verified) {

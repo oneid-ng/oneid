@@ -53,6 +53,7 @@ function getDemoKey(role: string): string | undefined {
 const PortalLoginBody = z.object({
   role: z.enum(["citizen", "issuer", "verifier", "admin"]),
   demoKey: z.string().min(1),
+  stellarAddress: z.string().optional(),
 });
 
 const RegisterOptionsBody = z.object({
@@ -262,7 +263,7 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
     if (!parsed.success) {
       throw Errors.validationError(parsed.error.message);
     }
-    const { role, demoKey } = parsed.data;
+    const { role, demoKey, stellarAddress } = parsed.data;
 
     const expectedKey = getDemoKey(role);
     if (!expectedKey || demoKey !== expectedKey) {
@@ -273,13 +274,20 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
 
     // Find or create the portal user for this role
     const db = getDb();
-    let [portalUser] = await db.select().from(users).where(eq(users.role, role)).limit(1);
+    let [portalUser] = stellarAddress
+      ? await db
+          .select()
+          .from(users)
+          .where(eq(users.stellar_address, stellarAddress))
+          .limit(1)
+      : await db.select().from(users).where(eq(users.role, role)).limit(1);
 
     if (!portalUser) {
       const [created] = await db
         .insert(users)
         .values({
           role,
+          stellar_address: stellarAddress,
           synthetic_profile: {
             _demo_note: `SYNTHETIC DATA — demo ${role} portal user`,
           },
