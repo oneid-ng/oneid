@@ -1,5 +1,5 @@
 import React, { useId } from "react";
-import { tokens } from "./tokens.js";
+import { tokens } from "./tokens";
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;

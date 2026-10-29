@@ -1,5 +1,5 @@
 import React from "react";
-import { tokens } from "./tokens.js";
+import { tokens } from "./tokens";
 
 export interface StepItem {
   title: string;

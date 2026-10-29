@@ -1,14 +1,14 @@
 import React from "react";
-import { tokens } from "./tokens.js";
-import { Button } from "./Button.js";
+import { tokens } from "./tokens";
+import { Button } from "./Button";
 
 export interface ErrorStateProps extends React.HTMLAttributes<HTMLDivElement> {
-  title?: string;
+  title?: string | undefined;
   message: string;
-  code?: string;
-  onRetry?: () => void;
-  retryLabel?: string;
-  retrying?: boolean;
+  code?: string | undefined;
+  onRetry?: (() => void) | undefined;
+  retryLabel?: string | undefined;
+  retrying?: boolean | undefined;
 }
 
 export const ErrorState = ({

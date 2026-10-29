@@ -1,5 +1,5 @@
 import React from "react";
-import { tokens } from "./tokens.js";
+import { tokens } from "./tokens";
 
 export interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: "success" | "error" | "info" | "warning";

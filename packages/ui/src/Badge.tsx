@@ -1,11 +1,12 @@
 import React from "react";
-import { tokens } from "./tokens.js";
+import { tokens } from "./tokens";
 
 export type OnChainStatus =
   | "active"
   | "revoked"
   | "expired"
   | "suspended"
+  | "withdrawn"
   | "partially_applied"
   | "submitted"
   | "applied"
@@ -63,6 +64,12 @@ export const Badge = ({ status = "active", children, style, ...props }: BadgePro
       bg: tokens.color.warningLight,
       text: tokens.color.warning,
       dot: tokens.color.warning,
+    },
+    withdrawn: {
+      label: "Withdrawn",
+      bg: tokens.color.errorLight,
+      text: tokens.color.error,
+      dot: tokens.color.error,
     },
     partially_applied: {
       label: "Partially Applied (On-Chain)",

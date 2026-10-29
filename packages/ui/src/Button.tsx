@@ -1,5 +1,5 @@
 import React from "react";
-import { tokens } from "./tokens.js";
+import { tokens } from "./tokens";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "danger" | "ghost";

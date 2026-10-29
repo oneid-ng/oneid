@@ -1,5 +1,5 @@
 import React from "react";
-import { tokens } from "./tokens.js";
+import { tokens } from "./tokens";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;

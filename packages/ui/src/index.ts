@@ -6,9 +6,9 @@
  * All components meet WCAG 2.1 AA accessibility targets with keyboard navigation and contrast.
  */
 
-export { tokens, type DesignTokens } from "./tokens.js";
-export { Button, type ButtonProps } from "./Button.js";
-export { Input, type InputProps } from "./Input.js";
+export { tokens, type DesignTokens } from "./tokens";
+export { Button, type ButtonProps } from "./Button";
+export { Input, type InputProps } from "./Input";
 export {
   Card,
   CardHeader,
@@ -17,9 +17,9 @@ export {
   CardContent,
   CardFooter,
   type CardProps,
-} from "./Card.js";
-export { Badge, type BadgeProps, type OnChainStatus } from "./Badge.js";
-export { Stepper, type StepperProps, type StepItem } from "./Stepper.js";
-export { Toast, type ToastProps } from "./Toast.js";
-export { Skeleton, type SkeletonProps } from "./Skeleton.js";
-export { ErrorState, type ErrorStateProps } from "./ErrorState.js";
+} from "./Card";
+export { Badge, type BadgeProps, type OnChainStatus } from "./Badge";
+export { Stepper, type StepperProps, type StepItem } from "./Stepper";
+export { Toast, type ToastProps } from "./Toast";
+export { Skeleton, type SkeletonProps } from "./Skeleton";
+export { ErrorState, type ErrorStateProps } from "./ErrorState";
