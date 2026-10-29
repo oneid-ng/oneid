@@ -127,3 +127,11 @@ export const SimulateFailureBody = z.object({
   type: z.enum(["rpc_down", "tx_failure", "partial_sync"]),
 });
 export type SimulateFailureBody = z.infer<typeof SimulateFailureBody>;
+
+export {
+  OneIdClient,
+  createApiClient,
+  ApiError,
+  type ApiResponse,
+  type ClientOptions,
+} from "./client.js";

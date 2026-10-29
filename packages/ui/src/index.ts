@@ -1,28 +1,25 @@
 /**
  * @oneid/ui
  *
- * Shared React component library and design tokens.
- * Full component library arrives in the UI/UX workstream (Phase 3).
- *
- * Design tokens follow the README palette:
- *   Deep navy, teal, warm gold accent on warm off-white.
+ * Shared React component library and design tokens for ONEiD (README §17).
+ * Design tokens follow the palette: deep navy, teal, warm gold accent on warm off-white.
+ * All components meet WCAG 2.1 AA accessibility targets with keyboard navigation and contrast.
  */
 
-// ── Design tokens ──────────────────────────────────────────────────────────
-
-export const tokens = {
-  color: {
-    navy: "#0D1F3C",
-    teal: "#0B7B8A",
-    gold: "#C9972A",
-    offWhite: "#FAF8F4",
-    errorRed: "#B91C1C",
-    successGreen: "#15803D",
-  },
-  font: {
-    sans: "'Inter', system-ui, sans-serif",
-  },
-} as const;
-
-// ── Placeholder — full components NOT IMPLEMENTED YET ─────────────────────
-export const UI_STUB = "NOT IMPLEMENTED YET — components arrive in Phase 3.";
+export { tokens, type DesignTokens } from "./tokens.js";
+export { Button, type ButtonProps } from "./Button.js";
+export { Input, type InputProps } from "./Input.js";
+export {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+  type CardProps,
+} from "./Card.js";
+export { Badge, type BadgeProps, type OnChainStatus } from "./Badge.js";
+export { Stepper, type StepperProps, type StepItem } from "./Stepper.js";
+export { Toast, type ToastProps } from "./Toast.js";
+export { Skeleton, type SkeletonProps } from "./Skeleton.js";
+export { ErrorState, type ErrorStateProps } from "./ErrorState.js";
