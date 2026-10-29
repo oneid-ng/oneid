@@ -35,6 +35,8 @@ const challengeStore = new Map<string, string>();
 // ── Demo portal credentials (never log demoKey) ───────────────────────────
 function getDemoKey(role: string): string | undefined {
   switch (role) {
+    case "citizen":
+      return process.env["DEMO_CITIZEN_KEY"] ?? "demo-citizen-2026";
     case "issuer":
       return process.env["DEMO_ISSUER_KEY"] ?? "demo-issuer-2026";
     case "verifier":
@@ -49,7 +51,7 @@ function getDemoKey(role: string): string | undefined {
 // ── Zod schemas ───────────────────────────────────────────────────────────
 
 const PortalLoginBody = z.object({
-  role: z.enum(["issuer", "verifier", "admin"]),
+  role: z.enum(["citizen", "issuer", "verifier", "admin"]),
   demoKey: z.string().min(1),
 });
 

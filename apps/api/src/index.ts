@@ -28,6 +28,9 @@ import { issuanceRoutes } from "./routes/issuance.js";
 import { registryRoutes } from "./routes/registry.js";
 import { auditRoutes } from "./routes/audit.js";
 import { adminRoutes } from "./routes/admin.js";
+import { requestsRoutes } from "./routes/requests.js";
+import { consentRoutes } from "./routes/consent.js";
+import { verificationRoutes } from "./routes/verification.js";
 
 // PII redaction note: pino serialisers strip req/res; no personal data is
 // ever passed directly to app.log.*  — personal data lives in synthetic_profile
@@ -75,6 +78,9 @@ export async function buildApp() {
   await app.register(fp(registryRoutes));
   await app.register(fp(auditRoutes));
   await app.register(fp(adminRoutes));
+  await app.register(fp(requestsRoutes));
+  await app.register(fp(consentRoutes));
+  await app.register(fp(verificationRoutes));
 
   // ── Health / readiness ──────────────────────────────────────────────────
   app.get("/healthz", async () => ({ status: "ok" }));

@@ -1,3 +1,4 @@
+import type * as Fs from "node:fs";
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import {
   loadContractIds,
@@ -46,7 +47,7 @@ const SYNTHETIC_SEEDED_LOCAL = {
 
 // Mock node:fs so seeded-registry tests work in CI without a deployed chain
 vi.mock("node:fs", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("node:fs")>();
+  const actual = await importOriginal<typeof Fs>();
   return {
     ...actual,
     existsSync: (p: string) => {
