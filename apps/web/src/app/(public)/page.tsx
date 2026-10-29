@@ -19,18 +19,28 @@ export default function WelcomePage() {
   const [loggingIn, setLoggingIn] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handlePortalLogin = async (role: "citizen" | "issuer" | "verifier" | "admin") => {
+  const handlePortalLogin = async (
+    role: "citizen" | "issuer" | "verifier" | "admin" | "bank" | "telecom",
+  ) => {
     setLoggingIn(role);
     setError(null);
     try {
-      await api.auth.loginPortal({
-        role,
-        demoKey: `demo-${role}-2026`,
-      });
-      if (role === "citizen") {
-        router.push("/home");
-      } else {
+      if (role === "bank" || role === "telecom") {
+        await api.auth.loginPortal({
+          role: "verifier",
+          demoKey: "demo-verifier-2026",
+        });
         router.push(`/${role}`);
+      } else {
+        await api.auth.loginPortal({
+          role,
+          demoKey: `demo-${role}-2026`,
+        });
+        if (role === "citizen") {
+          router.push("/home");
+        } else {
+          router.push(`/${role}`);
+        }
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to sign in");
@@ -183,7 +193,7 @@ export default function WelcomePage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
+                gridTemplateColumns: "repeat(auto-fit, minmax(90px, 1fr))",
                 gap: "0.5rem",
               }}
             >
@@ -202,6 +212,22 @@ export default function WelcomePage() {
                 onClick={() => handlePortalLogin("verifier")}
               >
                 Verifier
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                loading={loggingIn === "bank"}
+                onClick={() => handlePortalLogin("bank")}
+              >
+                Bank
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                loading={loggingIn === "telecom"}
+                onClick={() => handlePortalLogin("telecom")}
+              >
+                Telecom
               </Button>
               <Button
                 variant="outline"
