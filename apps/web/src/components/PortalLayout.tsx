@@ -118,12 +118,12 @@ export function PortalLayout({ portalTitle, portalRole, children }: PortalLayout
 
           <span
             style={{
-              background: tokens.color.tealLight,
-              color: tokens.color.teal,
+              background: tokens.color.surfaceMuted,
+              color: tokens.color.tealDark,
               fontSize: tokens.typography.fontSize.xs,
               padding: "0.2rem 0.5rem",
               borderRadius: tokens.radius.sm,
-              fontWeight: 600,
+              fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.05em",
             }}

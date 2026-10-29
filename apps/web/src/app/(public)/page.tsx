@@ -238,6 +238,19 @@ export default function WelcomePage() {
                 Admin
               </Button>
             </div>
+
+            <div style={{ marginTop: "0.5rem", textAlign: "center" }}>
+              <Link
+                href="/exceptions"
+                style={{
+                  fontSize: tokens.typography.fontSize.xs,
+                  color: tokens.color.teal,
+                  textDecoration: "underline",
+                }}
+              >
+                View System Exception States & Fail-Closed UX (README §18.5)
+              </Link>
+            </div>
           </div>
         </CardContent>
       </Card>

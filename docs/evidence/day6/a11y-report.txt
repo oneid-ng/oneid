@@ -1,0 +1,37 @@
+==================================================================
+ONEiD WCAG 2.1 AA ACCESSIBILITY AUDIT REPORT (Playwright + Axe)
+Standard: WCAG 2.1 Level AA (Contrast, Focus, Labels, Semantic HTML)
+Generated: 2026-10-29T19:28:13.808Z
+==================================================================
+
+[SCREEN: Welcome & Onboarding Portal Select (/)]
+  Screenshot: docs/evidence/day6/welcome.png
+  Total Violations: 0
+  Critical/Serious Violations: 0
+  Status: PASSED (Zero critical or serious violations)
+
+
+[SCREEN: Citizen Identity Onboarding (/onboard)]
+  Screenshot: docs/evidence/day6/onboard.png
+  Total Violations: 0
+  Critical/Serious Violations: 0
+  Status: PASSED (Zero critical or serious violations)
+
+
+[SCREEN: Selective Disclosure Consent (/consent/demo-req-101)]
+  Screenshot: docs/evidence/day6/consent.png
+  Total Violations: 0
+  Critical/Serious Violations: 0
+  Status: PASSED (Zero critical or serious violations)
+
+
+[SCREEN: Exception States & Fail-Closed UX (/exceptions)]
+  Screenshot: docs/evidence/day6/exceptions.png
+  Total Violations: 0
+  Critical/Serious Violations: 0
+  Status: PASSED (Zero critical or serious violations)
+
+
+==================================================================
+AUDIT SUMMARY: All core screens pass WCAG 2.1 AA accessibility checks.
+==================================================================

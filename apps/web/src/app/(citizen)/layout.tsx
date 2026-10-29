@@ -106,9 +106,9 @@ export default function CitizenLayout({ children }: { children: React.ReactNode 
               padding: "0.125rem 0.5rem",
               borderRadius: tokens.radius.full,
               background: tokens.color.surfaceMuted,
-              color: tokens.color.teal,
+              color: tokens.color.tealDark,
               fontSize: tokens.typography.fontSize.xs,
-              fontWeight: 600,
+              fontWeight: 700,
               textTransform: "uppercase",
             }}
           >

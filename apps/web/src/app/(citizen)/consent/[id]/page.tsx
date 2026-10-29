@@ -190,10 +190,10 @@ export default function ConsentScreen({ params }: { params: Promise<{ id: string
               style={{
                 fontSize: tokens.typography.fontSize.xs,
                 background: tokens.color.surfaceMuted,
-                color: tokens.color.teal,
+                color: tokens.color.tealDark,
                 padding: "0.25rem 0.5rem",
                 borderRadius: tokens.radius.md,
-                fontWeight: 600,
+                fontWeight: 700,
               }}
             >
               Expires in {expiryMinutes}m
