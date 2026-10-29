@@ -1,0 +1,734 @@
+
+> oneid@0.1.0 test /home/escelit/Desktop/legend-esc/oneid
+> turbo run test --concurrency=4
+
+turbo 2.5.4
+
+• Packages in scope: @oneid/api, @oneid/contracts-client, @oneid/eslint-config, @oneid/mock-anchor, @oneid/mock-fintech, @oneid/shared, @oneid/stellar, @oneid/test-utils, @oneid/tsconfig, @oneid/ui, @oneid/vc, @oneid/web
+• Running test in 12 packages
+• Remote caching disabled
+@oneid/shared:build: cache hit, replaying logs cf22cfa67430a4e6
+@oneid/shared:test: cache hit, replaying logs ed73760300323d46
+@oneid/shared:build: 
+@oneid/shared:build: 
+@oneid/shared:build: > @oneid/shared@0.1.0 build /home/escelit/Desktop/legend-esc/oneid/packages/shared
+@oneid/shared:build: > tsc -p tsconfig.json
+@oneid/shared:build: 
+@oneid/shared:test: 
+@oneid/shared:test: 
+@oneid/shared:test: > @oneid/shared@0.1.0 test /home/escelit/Desktop/legend-esc/oneid/packages/shared
+@oneid/shared:test: > vitest run
+@oneid/shared:test: 
+@oneid/shared:test: [?25l
+@oneid/shared:test:  RUN  v3.2.4 /home/escelit/Desktop/legend-esc/oneid/packages/shared
+@oneid/shared:test: 
+@oneid/shared:test: [?2026h
+@oneid/shared:test:  Test Files 0 passed (1)
+@oneid/shared:test:       Tests 0 passed (0)
+@oneid/shared:test:    Start at 19:34:57
+@oneid/shared:test:    Duration 916ms
+@oneid/shared:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/shared:test:  ❯ src/index.test.ts [queued]
+@oneid/shared:test: 
+@oneid/shared:test:  Test Files 0 passed (1)
+@oneid/shared:test:       Tests 0 passed (0)
+@oneid/shared:test:    Start at 19:34:57
+@oneid/shared:test:    Duration 1.42s
+@oneid/shared:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/shared:test:  ❯ src/index.test.ts 0/7
+@oneid/shared:test: 
+@oneid/shared:test:  Test Files 0 passed (1)
+@oneid/shared:test:       Tests 0 passed (7)
+@oneid/shared:test:    Start at 19:34:57
+@oneid/shared:test:    Duration 1.66s
+@oneid/shared:test: [?2026l[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K ✓ src/index.test.ts (7 tests) 34ms
+@oneid/shared:test:    ✓ @oneid/shared enums > Role values are stable strings 8ms
+@oneid/shared:test:    ✓ @oneid/shared enums > CredentialStatus covers active/revoked/expired 5ms
+@oneid/shared:test:    ✓ @oneid/shared enums > ConsentStatus covers active/withdrawn/expired 5ms
+@oneid/shared:test:    ✓ @oneid/shared enums > TicketStatus includes partially_applied 0ms
+@oneid/shared:test:    ✓ @oneid/shared enums > EntityStatus includes suspended 7ms
+@oneid/shared:test:    ✓ @oneid/shared enums > ApiErrorCode includes chain error codes 1ms
+@oneid/shared:test:    ✓ @oneid/shared enums > MAX_INSTITUTIONS_PER_TICKET is 10 0ms
+@oneid/shared:test: 
+@oneid/shared:test:  Test Files  1 passed (1)
+@oneid/shared:test:       Tests  7 passed (7)
+@oneid/shared:test:    Start at  19:34:57
+@oneid/shared:test:    Duration  1.92s (transform 263ms, setup 0ms, collect 262ms, tests 34ms, environment 0ms, prepare 315ms)
+@oneid/shared:test: 
+@oneid/shared:test: [?25h
+@oneid/ui:test: cache hit, replaying logs 9f76a77075d781a1
+@oneid/ui:test: 
+@oneid/ui:test: > @oneid/ui@0.1.0 test /home/escelit/Desktop/legend-esc/oneid/packages/ui
+@oneid/ui:test: > vitest run
+@oneid/ui:test: 
+@oneid/ui:test: 
+@oneid/ui:test:  RUN  v3.2.4 /home/escelit/Desktop/legend-esc/oneid/packages/ui
+@oneid/ui:test: 
+@oneid/ui:test:  ✓ src/index.test.ts (4 tests) 9ms
+@oneid/ui:test: 
+@oneid/ui:test:  Test Files  1 passed (1)
+@oneid/ui:test:       Tests  4 passed (4)
+@oneid/ui:test:    Start at  08:31:44
+@oneid/ui:test:    Duration  1.84s (transform 144ms, setup 0ms, collect 94ms, tests 9ms, environment 0ms, prepare 388ms)
+@oneid/ui:test: 
+@oneid/stellar:test: cache hit, replaying logs 45b107bcfa5e293d
+@oneid/stellar:test: 
+@oneid/stellar:test: 
+@oneid/stellar:test: > @oneid/stellar@0.1.0 test /home/escelit/Desktop/legend-esc/oneid/packages/stellar
+@oneid/stellar:test: > vitest run
+@oneid/stellar:test: 
+@oneid/stellar:test: [?25l
+@oneid/stellar:test:  RUN  v3.2.4 /home/escelit/Desktop/legend-esc/oneid/packages/stellar
+@oneid/stellar:test: 
+@oneid/stellar:test: [?2026h
+@oneid/stellar:test:  Test Files 0 passed (1)
+@oneid/stellar:test:       Tests 0 passed (0)
+@oneid/stellar:test:    Start at 19:34:59
+@oneid/stellar:test:    Duration 904ms
+@oneid/stellar:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/stellar:test:  ❯ src/index.test.ts [queued]
+@oneid/stellar:test: 
+@oneid/stellar:test:  Test Files 0 passed (1)
+@oneid/stellar:test:       Tests 0 passed (0)
+@oneid/stellar:test:    Start at 19:34:59
+@oneid/stellar:test:    Duration 1.96s
+@oneid/stellar:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/stellar:test:  ❯ src/index.test.ts 1/14
+@oneid/stellar:test: 
+@oneid/stellar:test:  Test Files 0 passed (1)
+@oneid/stellar:test:       Tests 1 passed (14)
+@oneid/stellar:test:    Start at 19:34:59
+@oneid/stellar:test:    Duration 2.06s
+@oneid/stellar:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/stellar:test:  ❯ src/index.test.ts 14/14
+@oneid/stellar:test: 
+@oneid/stellar:test:  Test Files 0 passed (1)
+@oneid/stellar:test:       Tests 14 passed (14)
+@oneid/stellar:test:    Start at 19:34:59
+@oneid/stellar:test:    Duration 2.16s
+@oneid/stellar:test: [?2026l[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K ✓ src/index.test.ts (14 tests) 208ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Network configuration (README §11) > resolves default local network profile 4ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Network configuration (README §11) > resolves testnet profile when STELLAR_NETWORK=testnet 1ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Network configuration (README §11) > creates RPC server with allowHttp for local development 3ms
+@oneid/stellar:test:    ✓ @oneid/stellar > No secret keys logged (Security Rule) > redacts Stellar S-prefix secret keys from strings and objects 9ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Typed error mapping (README §14.4) > maps 503 / connection errors to CHAIN_UNAVAILABLE with retryable: true 4ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Typed error mapping (README §14.4) > maps contract unauthorized / #1 to FORBIDDEN_ROLE (403) 1ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Typed error mapping (README §14.4) > maps suspended issuer (#2, #101) to ISSUER_NOT_ACTIVE (422) 5ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Typed error mapping (README §14.4) > maps revoked credential (#102) to CREDENTIAL_REVOKED (422) 4ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Typed error mapping (README §14.4) > maps expired credential or consent (#103, #203) to CREDENTIAL_EXPIRED (422) 3ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Typed error mapping (README §14.4) > maps withdrawn consent (#202) to CONSENT_WITHDRAWN (403) 1ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Retry with exponential backoff > simulated RPC failure retries then succeeds 63ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Retry with exponential backoff > fails immediately without retry on non-retryable errors 9ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Idempotency tracking > idempotent resubmission does not double-apply 7ms
+@oneid/stellar:test:    ✓ @oneid/stellar > Fee-bump wrapping (README §14.5, §16) > fee-bump path works on the local chain profile 89ms
+@oneid/stellar:test: 
+@oneid/stellar:test:  Test Files  1 passed (1)
+@oneid/stellar:test:       Tests  14 passed (14)
+@oneid/stellar:test:    Start at  19:34:59
+@oneid/stellar:test:    Duration  2.37s (transform 291ms, setup 0ms, collect 1.03s, tests 208ms, environment 0ms, prepare 227ms)
+@oneid/stellar:test: 
+@oneid/stellar:test: [?25h
+@oneid/vc:test: cache hit, replaying logs 86e9fea7e30b8e61
+@oneid/vc:test: 
+@oneid/vc:test: 
+@oneid/vc:test: > @oneid/vc@0.1.0 test /home/escelit/Desktop/legend-esc/oneid/packages/vc
+@oneid/vc:test: > vitest run
+@oneid/vc:test: 
+@oneid/vc:test: [?25l
+@oneid/vc:test:  RUN  v3.2.4 /home/escelit/Desktop/legend-esc/oneid/packages/vc
+@oneid/vc:test: 
+@oneid/vc:test: [?2026h
+@oneid/vc:test:  Test Files 0 passed (1)
+@oneid/vc:test:       Tests 0 passed (0)
+@oneid/vc:test:    Start at 19:35:02
+@oneid/vc:test:    Duration 922ms
+@oneid/vc:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/vc:test:  ❯ src/index.test.ts [queued]
+@oneid/vc:test: 
+@oneid/vc:test:  Test Files 0 passed (1)
+@oneid/vc:test:       Tests 0 passed (0)
+@oneid/vc:test:    Start at 19:35:02
+@oneid/vc:test:    Duration 1.23s
+@oneid/vc:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/vc:test:  ❯ src/index.test.ts 0/16
+@oneid/vc:test: 
+@oneid/vc:test:  Test Files 0 passed (1)
+@oneid/vc:test:       Tests 0 passed (16)
+@oneid/vc:test:    Start at 19:35:02
+@oneid/vc:test:    Duration 1.65s
+@oneid/vc:test: [?2026l[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K ✓ src/index.test.ts (16 tests) 42ms
+@oneid/vc:test:    ✓ @oneid/vc > RFC 8785 JSON Canonicalization Scheme (JCS) > canonicalises object keys in lexicographical UTF-16 code unit order 3ms
+@oneid/vc:test:    ✓ @oneid/vc > RFC 8785 JSON Canonicalization Scheme (JCS) > strips whitespace outside string literals 0ms
+@oneid/vc:test:    ✓ @oneid/vc > RFC 8785 JSON Canonicalization Scheme (JCS) > handles -0 as 0 per RFC 8785 §3.2.2.3 0ms
+@oneid/vc:test:    ✓ @oneid/vc > RFC 8785 JSON Canonicalization Scheme (JCS) > rejects non-finite numbers (NaN, Infinity) 1ms
+@oneid/vc:test:    ✓ @oneid/vc > saltedHash (README §7) > returns deterministic hashes for identical input and salt 1ms
+@oneid/vc:test:    ✓ @oneid/vc > saltedHash (README §7) > generates different hashes for different salts 2ms
+@oneid/vc:test:    ✓ @oneid/vc > saltedHash (README §7) > automatically generates random salt when omitted 1ms
+@oneid/vc:test:    ✓ @oneid/vc > Selective Disclosure & SD-JWT VC Flow > issues credential with valid W3C VC 2.0 structure and digests in _sd 1ms
+@oneid/vc:test:    ✓ @oneid/vc > Selective Disclosure & SD-JWT VC Flow > discloses ONLY approved claims and undisclosed claims are not recoverable 7ms
+@oneid/vc:test:    ✓ @oneid/vc > Selective Disclosure & SD-JWT VC Flow > rejects wrong or replayed nonce 3ms
+@oneid/vc:test:    ✓ @oneid/vc > Selective Disclosure & SD-JWT VC Flow > rejects wrong audience 2ms
+@oneid/vc:test:    ✓ @oneid/vc > Selective Disclosure & SD-JWT VC Flow > rejects tampered credential signature 2ms
+@oneid/vc:test:    ✓ @oneid/vc > Selective Disclosure & SD-JWT VC Flow > rejects tampered disclosure claim value 2ms
+@oneid/vc:test:    ✓ @oneid/vc > Selective Disclosure & SD-JWT VC Flow > rejects invalid holder binding when presentation is signed by an attacker key 4ms
+@oneid/vc:test:    ✓ @oneid/vc > Selective Disclosure & SD-JWT VC Flow > rejects expired credential 3ms
+@oneid/vc:test:    ✓ @oneid/vc > Selective Disclosure & SD-JWT VC Flow > invokes and enforces injected chain checks (issuer, credential, consent) 6ms
+@oneid/vc:test: 
+@oneid/vc:test:  Test Files  1 passed (1)
+@oneid/vc:test:       Tests  16 passed (16)
+@oneid/vc:test:    Start at  19:35:01
+@oneid/vc:test:    Duration  1.87s (transform 483ms, setup 0ms, collect 427ms, tests 42ms, environment 22ms, prepare 481ms)
+@oneid/vc:test: 
+@oneid/vc:test: [?25h
+@oneid/contracts-client:build: cache hit, replaying logs 4b22fd1382782176
+@oneid/contracts-client:build: 
+@oneid/stellar:build: cache hit, replaying logs 7a484658d17d126b
+@oneid/stellar:build: 
+@oneid/stellar:build: 
+@oneid/stellar:build: > @oneid/stellar@0.1.0 build /home/escelit/Desktop/legend-esc/oneid/packages/stellar
+@oneid/stellar:build: > tsc -p tsconfig.json
+@oneid/stellar:build: 
+@oneid/contracts-client:build: 
+@oneid/contracts-client:build: > @oneid/contracts-client@0.1.0 build /home/escelit/Desktop/legend-esc/oneid/packages/contracts-client
+@oneid/contracts-client:build: > tsc -p tsconfig.json
+@oneid/contracts-client:build: 
+@oneid/contracts-client:test: cache hit, replaying logs 07bdfacfc22ef875
+@oneid/contracts-client:test: 
+@oneid/contracts-client:test: 
+@oneid/contracts-client:test: > @oneid/contracts-client@0.1.0 test /home/escelit/Desktop/legend-esc/oneid/packages/contracts-client
+@oneid/contracts-client:test: > vitest run
+@oneid/contracts-client:test: 
+@oneid/contracts-client:test: [?25l
+@oneid/contracts-client:test:  RUN  v3.2.4 /home/escelit/Desktop/legend-esc/oneid/packages/contracts-client
+@oneid/contracts-client:test: 
+@oneid/contracts-client:test: [?2026h
+@oneid/contracts-client:test:  Test Files 0 passed (1)
+@oneid/contracts-client:test:       Tests 0 passed (0)
+@oneid/contracts-client:test:    Start at 19:34:57
+@oneid/contracts-client:test:    Duration 913ms
+@oneid/contracts-client:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/contracts-client:test:  ❯ src/index.test.ts [queued]
+@oneid/contracts-client:test: 
+@oneid/contracts-client:test:  Test Files 0 passed (1)
+@oneid/contracts-client:test:       Tests 0 passed (0)
+@oneid/contracts-client:test:    Start at 19:34:57
+@oneid/contracts-client:test:    Duration 1.12s
+@oneid/contracts-client:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/contracts-client:test:  ❯ src/index.test.ts [queued]
+@oneid/contracts-client:test: 
+@oneid/contracts-client:test:  Test Files 0 passed (1)
+@oneid/contracts-client:test:       Tests 0 passed (0)
+@oneid/contracts-client:test:    Start at 19:34:57
+@oneid/contracts-client:test:    Duration 1.97s
+@oneid/contracts-client:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/contracts-client:test:  ❯ src/index.test.ts 0/5
+@oneid/contracts-client:test: 
+@oneid/contracts-client:test:  Test Files 0 passed (1)
+@oneid/contracts-client:test:       Tests 0 passed (5)
+@oneid/contracts-client:test:    Start at 19:34:57
+@oneid/contracts-client:test:    Duration 2.58s
+@oneid/contracts-client:test: [?2026l[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K ✓ src/index.test.ts (5 tests) 83ms
+@oneid/contracts-client:test:    ✓ @oneid/contracts-client > throws when contract IDs are missing and no deployment file exists 15ms
+@oneid/contracts-client:test:    ✓ @oneid/contracts-client > returns IDs when env vars are set 5ms
+@oneid/contracts-client:test:    ✓ @oneid/contracts-client > instantiates client wrappers with correct options 24ms
+@oneid/contracts-client:test:    ✓ @oneid/contracts-client > reads seeded registry correctly 13ms
+@oneid/contracts-client:test:    ✓ @oneid/contracts-client > checks active issuer and verifier roles accurately from seeded registry 19ms
+@oneid/contracts-client:test: 
+@oneid/contracts-client:test:  Test Files  1 passed (1)
+@oneid/contracts-client:test:       Tests  5 passed (5)
+@oneid/contracts-client:test:    Start at  19:34:57
+@oneid/contracts-client:test:    Duration  2.83s (transform 474ms, setup 0ms, collect 1.41s, tests 83ms, environment 1ms, prepare 271ms)
+@oneid/contracts-client:test: 
+@oneid/contracts-client:test: [?25h
+@oneid/vc:build: cache hit, replaying logs d00e47cb21e8b0ed
+@oneid/vc:build: 
+@oneid/vc:build: 
+@oneid/vc:build: > @oneid/vc@0.1.0 build /home/escelit/Desktop/legend-esc/oneid/packages/vc
+@oneid/vc:build: > tsc -p tsconfig.json
+@oneid/vc:build: 
+@oneid/test-utils:test: cache hit, replaying logs f3fc982b87df0d06
+@oneid/test-utils:test: 
+@oneid/test-utils:test: 
+@oneid/test-utils:test: > @oneid/test-utils@0.1.0 test /home/escelit/Desktop/legend-esc/oneid/packages/test-utils
+@oneid/test-utils:test: > vitest run
+@oneid/test-utils:test: 
+@oneid/test-utils:test: [?25l
+@oneid/test-utils:test:  RUN  v3.2.4 /home/escelit/Desktop/legend-esc/oneid/packages/test-utils
+@oneid/test-utils:test: 
+@oneid/test-utils:test: [?2026h
+@oneid/test-utils:test:  Test Files 0 passed (1)
+@oneid/test-utils:test:       Tests 0 passed (0)
+@oneid/test-utils:test:    Start at 19:34:57
+@oneid/test-utils:test:    Duration 917ms
+@oneid/test-utils:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/test-utils:test:  ❯ src/index.test.ts [queued]
+@oneid/test-utils:test: 
+@oneid/test-utils:test:  Test Files 0 passed (1)
+@oneid/test-utils:test:       Tests 0 passed (0)
+@oneid/test-utils:test:    Start at 19:34:57
+@oneid/test-utils:test:    Duration 1.32s
+@oneid/test-utils:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/test-utils:test:  ❯ src/index.test.ts 0/5
+@oneid/test-utils:test: 
+@oneid/test-utils:test:  Test Files 0 passed (1)
+@oneid/test-utils:test:       Tests 0 passed (5)
+@oneid/test-utils:test:    Start at 19:34:57
+@oneid/test-utils:test:    Duration 1.42s
+@oneid/test-utils:test: [?2026l[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K ✓ src/index.test.ts (5 tests) 29ms
+@oneid/test-utils:test:    ✓ @oneid/test-utils synthetic profiles > SYNTHETIC_PROFILES has at least 3 entries 11ms
+@oneid/test-utils:test:    ✓ @oneid/test-utils synthetic profiles > getSyntheticProfile returns first profile by default 1ms
+@oneid/test-utils:test:    ✓ @oneid/test-utils synthetic profiles > getSyntheticProfile wraps around 0ms
+@oneid/test-utils:test:    ✓ @oneid/test-utils synthetic profiles > all profiles have SYNTH- prefixed NINs (never real NIN format) 1ms
+@oneid/test-utils:test:    ✓ @oneid/test-utils chain harness stub > createChainTestHarness throws NOT IMPLEMENTED YET 7ms
+@oneid/test-utils:test: 
+@oneid/test-utils:test:  Test Files  1 passed (1)
+@oneid/test-utils:test:       Tests  5 passed (5)
+@oneid/test-utils:test:    Start at  19:34:56
+@oneid/test-utils:test:    Duration  1.62s (transform 155ms, setup 0ms, collect 139ms, tests 29ms, environment 0ms, prepare 242ms)
+@oneid/test-utils:test: 
+@oneid/test-utils:test: [?25h
+@oneid/mock-fintech:test: cache hit, replaying logs 342456c83ff63c0b
+@oneid/mock-fintech:test: 
+@oneid/mock-fintech:test: 
+@oneid/mock-fintech:test: > @oneid/mock-fintech@0.1.0 test /home/escelit/Desktop/legend-esc/oneid/apps/mock-fintech
+@oneid/mock-fintech:test: > vitest run
+@oneid/mock-fintech:test: 
+@oneid/mock-fintech:test: [?25l
+@oneid/mock-fintech:test:  RUN  v3.2.4 /home/escelit/Desktop/legend-esc/oneid/apps/mock-fintech
+@oneid/mock-fintech:test: 
+@oneid/mock-fintech:test: [?2026h
+@oneid/mock-fintech:test:  ❯ src/index.test.ts [queued]
+@oneid/mock-fintech:test: 
+@oneid/mock-fintech:test:  Test Files 0 passed (1)
+@oneid/mock-fintech:test:       Tests 0 passed (0)
+@oneid/mock-fintech:test:    Start at 19:35:02
+@oneid/mock-fintech:test:    Duration 942ms
+@oneid/mock-fintech:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/mock-fintech:test:  ❯ src/index.test.ts 0/2
+@oneid/mock-fintech:test: 
+@oneid/mock-fintech:test:  Test Files 0 passed (1)
+@oneid/mock-fintech:test:       Tests 0 passed (2)
+@oneid/mock-fintech:test:    Start at 19:35:02
+@oneid/mock-fintech:test:    Duration 1.45s
+@oneid/mock-fintech:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K{"level":30,"time":1793298904576,"pid":162788,"hostname":"escelit-Latitude-E7240","reqId":"req-1","req":{"method":"GET","url":"/healthz","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+@oneid/mock-fintech:test: 
+@oneid/mock-fintech:test:  ❯ src/index.test.ts 1/2
+@oneid/mock-fintech:test: 
+@oneid/mock-fintech:test:  Test Files 0 passed (1)
+@oneid/mock-fintech:test:       Tests 1 passed (2)
+@oneid/mock-fintech:test:    Start at 19:35:02
+@oneid/mock-fintech:test:    Duration 1.55s
+@oneid/mock-fintech:test: [?2026l[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K{"level":30,"time":1793298904584,"pid":162788,"hostname":"escelit-Latitude-E7240","reqId":"req-1","res":{"statusCode":200},"responseTime":6.726894997060299,"msg":"request completed"}
+@oneid/mock-fintech:test: {"level":30,"time":1793298904589,"pid":162788,"hostname":"escelit-Latitude-E7240","reqId":"req-2","req":{"method":"GET","url":"/verify/status","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+@oneid/mock-fintech:test: {"level":50,"time":1793298904590,"pid":162788,"hostname":"escelit-Latitude-E7240","reqId":"req-2","req":{"method":"GET","url":"/verify/status","host":"localhost:80","remoteAddress":"127.0.0.1"},"res":{"statusCode":501},"err":{"type":"NotImplementedError","message":"NOT IMPLEMENTED YET — fintech verifier endpoints arrive in Phase 3.","stack":"NotImplementedError: NOT IMPLEMENTED YET — fintech verifier endpoints arrive in Phase 3.\n    at Object.notImplemented (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/@fastify+sensible@6.0.3/node_modules/@fastify/sensible/lib/httpErrors.js:141:12)\n    at _Reply.notImplemented (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/@fastify+sensible@6.0.3/node_modules/@fastify/sensible/index.js:50:42)\n    at Object.<anonymous> (/home/escelit/Desktop/legend-esc/oneid/apps/mock-fintech/src/index.ts:15:18)\n    at preHandlerCallbackInner (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:161:24)\n    at preHandlerCallback (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:129:5)\n    at validationCompleted (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:119:5)\n    at preValidationCallback (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:96:5)\n    at handler (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:73:7)\n    at Object.handleRequest (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:29:5)\n    at runPreParsing (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/route.js:571:19)","status":501,"statusCode":501,"expose":false},"msg":"NOT IMPLEMENTED YET — fintech verifier endpoints arrive in Phase 3."}
+@oneid/mock-fintech:test: {"level":30,"time":1793298904597,"pid":162788,"hostname":"escelit-Latitude-E7240","reqId":"req-2","res":{"statusCode":501},"responseTime":8.445552997291088,"msg":"request completed"}
+@oneid/mock-fintech:test:  ✓ src/index.test.ts (2 tests) 129ms
+@oneid/mock-fintech:test:    ✓ @oneid/mock-fintech health > GET /healthz returns 200 33ms
+@oneid/mock-fintech:test:    ✓ @oneid/mock-fintech health > GET /verify/anything returns 501 10ms
+@oneid/mock-fintech:test: 
+@oneid/mock-fintech:test:  Test Files  1 passed (1)
+@oneid/mock-fintech:test:       Tests  2 passed (2)
+@oneid/mock-fintech:test:    Start at  19:35:02
+@oneid/mock-fintech:test:    Duration  1.72s (transform 190ms, setup 0ms, collect 558ms, tests 129ms, environment 0ms, prepare 474ms)
+@oneid/mock-fintech:test: 
+@oneid/mock-fintech:test: [?25h
+@oneid/mock-anchor:test: cache hit, replaying logs ab705b9997f60029
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test: > @oneid/mock-anchor@0.1.0 test /home/escelit/Desktop/legend-esc/oneid/apps/mock-anchor
+@oneid/mock-anchor:test: > vitest run
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test: [?25l
+@oneid/mock-anchor:test:  RUN  v3.2.4 /home/escelit/Desktop/legend-esc/oneid/apps/mock-anchor
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test: [?2026h
+@oneid/mock-anchor:test:  ❯ src/index.test.ts [queued]
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test:  Test Files 0 passed (1)
+@oneid/mock-anchor:test:       Tests 0 passed (0)
+@oneid/mock-anchor:test:    Start at 19:35:01
+@oneid/mock-anchor:test:    Duration 822ms
+@oneid/mock-anchor:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/mock-anchor:test:  ❯ src/index.test.ts [queued]
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test:  Test Files 0 passed (1)
+@oneid/mock-anchor:test:       Tests 0 passed (0)
+@oneid/mock-anchor:test:    Start at 19:35:01
+@oneid/mock-anchor:test:    Duration 922ms
+@oneid/mock-anchor:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K
+@oneid/mock-anchor:test:  ❯ src/index.test.ts 0/3
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test:  Test Files 0 passed (1)
+@oneid/mock-anchor:test:       Tests 0 passed (3)
+@oneid/mock-anchor:test:    Start at 19:35:01
+@oneid/mock-anchor:test:    Duration 1.63s
+@oneid/mock-anchor:test: [?2026l[?2026h[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K{"level":30,"time":1793298903619,"pid":162615,"hostname":"escelit-Latitude-E7240","reqId":"req-1","req":{"method":"GET","url":"/healthz","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test:  ❯ src/index.test.ts 1/3
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test:  Test Files 0 passed (1)
+@oneid/mock-anchor:test:       Tests 1 passed (3)
+@oneid/mock-anchor:test:    Start at 19:35:01
+@oneid/mock-anchor:test:    Duration 1.83s
+@oneid/mock-anchor:test: [?2026l[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K ✓ src/index.test.ts (3 tests) 201ms
+@oneid/mock-anchor:test:    ✓ @oneid/mock-anchor health > GET /healthz returns 200 51ms
+@oneid/mock-anchor:test:    ✓ @oneid/mock-anchor health > GET /.well-known/stellar.toml returns text 3ms
+@oneid/mock-anchor:test:    ✓ @oneid/mock-anchor health > GET /sep/anything returns 501 28ms
+@oneid/mock-anchor:test: {"level":30,"time":1793298903633,"pid":162615,"hostname":"escelit-Latitude-E7240","reqId":"req-1","res":{"statusCode":200},"responseTime":13.103716000914574,"msg":"request completed"}
+@oneid/mock-anchor:test: {"level":30,"time":1793298903642,"pid":162615,"hostname":"escelit-Latitude-E7240","reqId":"req-2","req":{"method":"GET","url":"/.well-known/stellar.toml","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+@oneid/mock-anchor:test: {"level":30,"time":1793298903643,"pid":162615,"hostname":"escelit-Latitude-E7240","reqId":"req-2","res":{"statusCode":200},"responseTime":0.771794006228447,"msg":"request completed"}
+@oneid/mock-anchor:test: {"level":30,"time":1793298903649,"pid":162615,"hostname":"escelit-Latitude-E7240","reqId":"req-3","req":{"method":"GET","url":"/sep/auth","host":"localhost:80","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+@oneid/mock-anchor:test: {"level":50,"time":1793298903650,"pid":162615,"hostname":"escelit-Latitude-E7240","reqId":"req-3","req":{"method":"GET","url":"/sep/auth","host":"localhost:80","remoteAddress":"127.0.0.1"},"res":{"statusCode":501},"err":{"type":"NotImplementedError","message":"NOT IMPLEMENTED YET — SEP endpoints arrive in Phase 3.","stack":"NotImplementedError: NOT IMPLEMENTED YET — SEP endpoints arrive in Phase 3.\n    at Object.notImplemented (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/@fastify+sensible@6.0.3/node_modules/@fastify/sensible/lib/httpErrors.js:141:12)\n    at _Reply.notImplemented (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/@fastify+sensible@6.0.3/node_modules/@fastify/sensible/index.js:50:42)\n    at Object.<anonymous> (/home/escelit/Desktop/legend-esc/oneid/apps/mock-anchor/src/index.ts:26:18)\n    at preHandlerCallbackInner (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:161:24)\n    at preHandlerCallback (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:129:5)\n    at validationCompleted (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:119:5)\n    at preValidationCallback (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:96:5)\n    at handler (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:73:7)\n    at Object.handleRequest (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/handleRequest.js:29:5)\n    at runPreParsing (/home/escelit/Desktop/legend-esc/oneid/node_modules/.pnpm/fastify@5.3.3/node_modules/fastify/lib/route.js:571:19)","status":501,"statusCode":501,"expose":false},"msg":"NOT IMPLEMENTED YET — SEP endpoints arrive in Phase 3."}
+@oneid/mock-anchor:test: {"level":30,"time":1793298903671,"pid":162615,"hostname":"escelit-Latitude-E7240","reqId":"req-3","res":{"statusCode":501},"responseTime":22.59180200099945,"msg":"request completed"}
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test:  Test Files  1 passed (1)
+@oneid/mock-anchor:test:       Tests  3 passed (3)
+@oneid/mock-anchor:test:    Start at  19:35:01
+@oneid/mock-anchor:test:    Duration  1.90s (transform 205ms, setup 0ms, collect 726ms, tests 201ms, environment 0ms, prepare 308ms)
+@oneid/mock-anchor:test: 
+@oneid/mock-anchor:test: [?25h
+@oneid/web:test: cache hit, replaying logs 111eca5f1cffd7c8
+@oneid/web:test: 
+@oneid/web:test: 
+@oneid/web:test: > @oneid/web@0.1.0 test /home/escelit/Desktop/legend-esc/oneid/apps/web
+@oneid/web:test: > vitest run
+@oneid/web:test: 
+@oneid/web:test: [?25l
+@oneid/web:test:  RUN  v3.2.4 /home/escelit/Desktop/legend-esc/oneid/apps/web
+@oneid/web:test: 
+@oneid/web:test: No test files found, exiting with code 0
+@oneid/web:test: 
+@oneid/web:test: include: src/**/*.test.ts, src/**/*.test.tsx
+@oneid/web:test: exclude:  **/node_modules/**, **/dist/**, **/cypress/**, **/.{idea,git,cache,output,temp}/**, **/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*
+@oneid/web:test: 
+@oneid/web:test: [?25h
+@oneid/api:test: cache miss, executing 3f5264ae87b8042c
+@oneid/api:test: 
+@oneid/api:test: > @oneid/api@0.1.0 test /home/escelit/Desktop/legend-esc/oneid/apps/api
+@oneid/api:test: > vitest run
+@oneid/api:test: 
+@oneid/api:test: 
+@oneid/api:test:  RUN  v3.2.4 /home/escelit/Desktop/legend-esc/oneid/apps/api
+@oneid/api:test: 
+@oneid/api:test: {"level":30,"time":1793299644961,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_GZezWCgPB","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_GZezWCgPB"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299644980,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_GZezWCgPB","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299644990,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_GZezWCgPB","res":{"statusCode":200},"responseTime":23.168348997831345,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299644993,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_Y6YDvZC4m","req":{"method":"POST","url":"/v1/requests","id":"req_Y6YDvZC4m"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299644998,"pid":166253,"hostname":"escelit-Latitude-E7240","code":"FORBIDDEN_ROLE","requestId":"req_Y6YDvZC4m","msg":"AppError: Role 'citizen' is not allowed. Required: verifier."}
+@oneid/api:test: {"level":30,"time":1793299644999,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_Y6YDvZC4m","res":{"statusCode":403},"responseTime":6.0906059965491295,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645002,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_QgCwmDgzp","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_QgCwmDgzp"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645003,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_QgCwmDgzp","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645004,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_QgCwmDgzp","res":{"statusCode":200},"responseTime":2.1836779937148094,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645005,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_RBfHizHGG","req":{"method":"POST","url":"/v1/consents","id":"req_RBfHizHGG"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645017,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_RYeDRU3Qy","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_RYeDRU3Qy"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645028,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Tc2FbJeEQ","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_Tc2FbJeEQ"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645030,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_Klevj8ihC","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_Klevj8ihC"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299645006,"pid":166253,"hostname":"escelit-Latitude-E7240","code":"FORBIDDEN_ROLE","requestId":"req_RBfHizHGG","msg":"AppError: Role 'verifier' is not allowed. Required: citizen."}
+@oneid/api:test: {"level":30,"time":1793299645007,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_RBfHizHGG","res":{"statusCode":403},"responseTime":1.6316130012273788,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645032,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_Klevj8ihC","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645033,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_Klevj8ihC","res":{"statusCode":200},"responseTime":2.187209002673626,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645034,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_EUH2NRqmH","req":{"method":"POST","url":"/v1/requests","id":"req_EUH2NRqmH"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645039,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_EUH2NRqmH","res":{"statusCode":201},"responseTime":4.954767994582653,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645045,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_vkh6CESdn","req":{"method":"POST","url":"/v1/verify/presentation","id":"req_vkh6CESdn"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645039,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Tc2FbJeEQ","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645044,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Tc2FbJeEQ","res":{"statusCode":200},"responseTime":14.969298996031284,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645046,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_kEKb7u8CZ","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_kEKb7u8CZ"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645048,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_kEKb7u8CZ","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645049,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_kEKb7u8CZ","res":{"statusCode":200},"responseTime":2.6681199967861176,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645050,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_3BdFc1cAJ","req":{"method":"POST","url":"/v1/requests","id":"req_3BdFc1cAJ"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645054,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_3BdFc1cAJ","res":{"statusCode":201},"responseTime":4.72503399848938,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645056,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_aUzq0evHX","req":{"method":"POST","url":"/v1/consents","id":"req_aUzq0evHX"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645085,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_PctPYBHHn","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_PctPYBHHn"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645048,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_vkh6CESdn","res":{"statusCode":200},"responseTime":2.9175699949264526,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645086,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_PctPYBHHn","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645087,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_PctPYBHHn","res":{"statusCode":200},"responseTime":2.0426260009407997,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645088,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_cVHGCbVMa","req":{"method":"POST","url":"/v1/requests","id":"req_cVHGCbVMa"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645091,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_cVHGCbVMa","res":{"statusCode":201},"responseTime":2.414411000907421,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645091,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_BM4vRctWu","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_BM4vRctWu"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645092,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_BM4vRctWu","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645093,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_BM4vRctWu","res":{"statusCode":200},"responseTime":1.412774994969368,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645093,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_6ntlvjPdl","req":{"method":"POST","url":"/v1/consents","id":"req_6ntlvjPdl"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645096,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_6ntlvjPdl","res":{"statusCode":201},"responseTime":2.6818720027804375,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645100,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_26KKn4cAi","req":{"method":"POST","url":"/v1/verify/presentation","id":"req_26KKn4cAi"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645101,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_OiOGt8bkN","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_OiOGt8bkN"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645105,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_xyw4hS8L9","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_xyw4hS8L9"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645034,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_RYeDRU3Qy","role":"issuer","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645043,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_RYeDRU3Qy","res":{"statusCode":200},"responseTime":24.65997300297022,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645062,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_aUzq0evHX","res":{"statusCode":201},"responseTime":5.7862550020217896,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645107,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_OiOGt8bkN","role":"admin","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645104,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_26KKn4cAi","res":{"statusCode":200},"responseTime":4.022578999400139,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645107,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_KnF6zwNON","req":{"method":"POST","url":"/v1/verify/presentation","id":"req_KnF6zwNON"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645109,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_xyw4hS8L9","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645111,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_xyw4hS8L9","res":{"statusCode":200},"responseTime":5.479577004909515,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645112,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_BlfqWrpBj","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_BlfqWrpBj"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645113,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_BlfqWrpBj","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645114,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_BlfqWrpBj","res":{"statusCode":200},"responseTime":2.547196000814438,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645116,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_tZaztZRB3","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_tZaztZRB3"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645117,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_tZaztZRB3","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645119,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_tZaztZRB3","res":{"statusCode":200},"responseTime":2.664128005504608,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645119,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_ViHJdgOvU","req":{"method":"POST","url":"/v1/corrections","id":"req_ViHJdgOvU"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645124,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_ViHJdgOvU","res":{"statusCode":201},"responseTime":4.614899002015591,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645127,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_mMGzOaAAg","req":{"method":"POST","url":"/v1/corrections/1b0dce7a-28a9-4162-b9e5-33d30ab490af/respond","id":"req_mMGzOaAAg"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645132,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_mMGzOaAAg","res":{"statusCode":200},"responseTime":4.462074004113674,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645132,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_B12ejpQFd","req":{"method":"POST","url":"/v1/corrections/1b0dce7a-28a9-4162-b9e5-33d30ab490af/respond","id":"req_B12ejpQFd"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645135,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_XttvOtGkk","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_XttvOtGkk"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645110,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_KnF6zwNON","res":{"statusCode":200},"responseTime":3.2455690056085587,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645136,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_XttvOtGkk","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645137,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_XttvOtGkk","res":{"statusCode":200},"responseTime":1.5385069996118546,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645138,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_FOBBPkZ7P","req":{"method":"POST","url":"/v1/requests","id":"req_FOBBPkZ7P"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645140,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_FOBBPkZ7P","res":{"statusCode":201},"responseTime":1.6321009993553162,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645140,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_D5jczvfvx","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_D5jczvfvx"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645141,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_D5jczvfvx","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645141,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_D5jczvfvx","res":{"statusCode":200},"responseTime":1.074854999780655,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645142,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_XgADWN68o","req":{"method":"POST","url":"/v1/consents","id":"req_XgADWN68o"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645147,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_TSrQItFxF","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_TSrQItFxF"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645108,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_OiOGt8bkN","res":{"statusCode":200},"responseTime":6.460609994828701,"msg":"request completed"}
+@oneid/api:test: {"level":40,"time":1793299645149,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_TSrQItFxF","role":"issuer","msg":"Portal login failed: invalid demo key"}
+@oneid/api:test: {"level":30,"time":1793299645143,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_XgADWN68o","res":{"statusCode":201},"responseTime":1.4864140003919601,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645145,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_BvxcpS7Ds","req":{"method":"POST","url":"/v1/consents/0ebd6ec4d165fe0d6315b355ac15dc629a0aea7335d04dae73b77e10156b2df4/withdraw","id":"req_BvxcpS7Ds"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645147,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_BvxcpS7Ds","res":{"statusCode":200},"responseTime":1.4099420011043549,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645148,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_AsvESS9J8","req":{"method":"POST","url":"/v1/verify/presentation","id":"req_AsvESS9J8"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645175,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_QsKZUjDud","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_QsKZUjDud"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645150,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_AsvESS9J8","res":{"statusCode":200},"responseTime":1.0387659966945648,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645176,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_QsKZUjDud","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645177,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_QsKZUjDud","res":{"statusCode":200},"responseTime":1.2038740068674088,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645177,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_xZJ9qpPv5","req":{"method":"POST","url":"/v1/requests","id":"req_xZJ9qpPv5"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645180,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_xZJ9qpPv5","res":{"statusCode":201},"responseTime":2.2387010008096695,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645180,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_5w5vGEXW9","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_5w5vGEXW9"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645181,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_5w5vGEXW9","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645182,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_5w5vGEXW9","res":{"statusCode":200},"responseTime":1.903027005493641,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645183,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_iDn4ixG8S","req":{"method":"POST","url":"/v1/consents","id":"req_iDn4ixG8S"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645185,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_iDn4ixG8S","res":{"statusCode":201},"responseTime":1.7544570043683052,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645186,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_zMHS7vLRG","req":{"method":"POST","url":"/v1/verify/presentation","id":"req_zMHS7vLRG"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645187,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_9emBHhVPp","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_9emBHhVPp"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645136,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_B12ejpQFd","res":{"statusCode":200},"responseTime":3.8552410006523132,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645137,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_SzQGDJGl9","req":{"method":"GET","url":"/v1/corrections/1b0dce7a-28a9-4162-b9e5-33d30ab490af","id":"req_SzQGDJGl9"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645138,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_SzQGDJGl9","res":{"statusCode":200},"responseTime":1.2084629982709885,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645189,"pid":166253,"hostname":"escelit-Latitude-E7240","reqId":"req_zMHS7vLRG","res":{"statusCode":200},"responseTime":2.4595130011439323,"msg":"request completed"}
+@oneid/api:test:  ✓ src/routes/consent-verification.test.ts (5 tests) 331ms
+@oneid/api:test: {"level":30,"time":1793299645189,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_9emBHhVPp","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645190,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_9emBHhVPp","res":{"statusCode":200},"responseTime":2.371340997517109,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645191,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_X31Biga2R","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_X31Biga2R"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645194,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_sNdHcfkAo","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_sNdHcfkAo"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299645150,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"UNAUTHENTICATED","requestId":"req_TSrQItFxF","msg":"AppError: Invalid demo credentials."}
+@oneid/api:test: {"level":30,"time":1793299645155,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_TSrQItFxF","res":{"statusCode":401},"responseTime":7.431427001953125,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645193,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_X31Biga2R","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645193,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_X31Biga2R","res":{"statusCode":200},"responseTime":1.8890269994735718,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645200,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_6ShQyZGrG","req":{"method":"POST","url":"/v1/requests","id":"req_6ShQyZGrG"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299645200,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"VALIDATION_ERROR","requestId":"req_sNdHcfkAo","msg":"AppError: [\n  {\n    \"received\": \"hacker\",\n    \"code\": \"invalid_enum_value\",\n    \"options\": [\n      \"citizen\",\n      \"issuer\",\n      \"verifier\",\n      \"admin\"\n    ],\n    \"path\": [\n      \"role\"\n    ],\n    \"message\": \"Invalid enum value. Expected 'citizen' | 'issuer' | 'verifier' | 'admin', received 'hacker'\"\n  }\n]"}
+@oneid/api:test: {"level":30,"time":1793299645202,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_6ShQyZGrG","res":{"statusCode":201},"responseTime":2.0218870043754578,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645203,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_gJonruu94","req":{"method":"POST","url":"/v1/consents","id":"req_gJonruu94"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645207,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_gJonruu94","res":{"statusCode":201},"responseTime":4.137607000768185,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645208,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Ury3yerDf","req":{"method":"POST","url":"/v1/verify/presentation","id":"req_Ury3yerDf"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645220,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_QbloazveR","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_QbloazveR"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645202,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_sNdHcfkAo","res":{"statusCode":400},"responseTime":5.781389005482197,"msg":"request completed"}
+@oneid/api:test: {"level":40,"time":1793299645222,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"VALIDATION_ERROR","requestId":"req_QbloazveR","msg":"AppError: [\n  {\n    \"expected\": \"'citizen' | 'issuer' | 'verifier' | 'admin'\",\n    \"received\": \"undefined\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"role\"\n    ],\n    \"message\": \"Required\"\n  },\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"string\",\n    \"received\": \"undefined\",\n    \"path\": [\n      \"demoKey\"\n    ],\n    \"message\": \"Required\"\n  }\n]"}
+@oneid/api:test: {"level":30,"time":1793299645238,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_FHXV75ASA","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_FHXV75ASA"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645214,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Ury3yerDf","res":{"statusCode":200},"responseTime":5.868069000542164,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645240,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_FHXV75ASA","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645241,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_FHXV75ASA","res":{"statusCode":200},"responseTime":2.441459000110626,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645242,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_bODs3zYU2","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_bODs3zYU2"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645246,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_bODs3zYU2","role":"issuer","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645247,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_bODs3zYU2","res":{"statusCode":200},"responseTime":5.120318993926048,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645248,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_YwibdBHov","req":{"method":"POST","url":"/v1/applications","id":"req_YwibdBHov"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645251,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_UR226l6xG","req":{"method":"GET","url":"/v1/identity/me","id":"req_UR226l6xG"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645249,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_YwibdBHov","applicationId":"9f555859-f7ab-4f62-be37-dd9f9be8f5bc","msg":"Application submitted"}
+@oneid/api:test: {"level":30,"time":1793299645250,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_YwibdBHov","res":{"statusCode":201},"responseTime":2.327317997813225,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645251,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Zo0mm1cja","req":{"method":"POST","url":"/v1/applications/9f555859-f7ab-4f62-be37-dd9f9be8f5bc/decision","id":"req_Zo0mm1cja"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645252,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Zo0mm1cja","applicationId":"9f555859-f7ab-4f62-be37-dd9f9be8f5bc","decision":"approved","msg":"Application decision recorded"}
+@oneid/api:test: {"level":30,"time":1793299645253,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Zo0mm1cja","res":{"statusCode":200},"responseTime":1.859274998307228,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645253,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_QhKWp7RuQ","req":{"method":"POST","url":"/v1/credentials/issue","id":"req_QhKWp7RuQ"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645256,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_QhKWp7RuQ","credentialHash":"1be551bd252c01dca81bf7a97e0b4b60d1564ba0be19b404d51f398aafa2dc16","ledger":null,"msg":"Credential issued"}
+@oneid/api:test: {"level":30,"time":1793299645257,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_QhKWp7RuQ","res":{"statusCode":201},"responseTime":3.839549995958805,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645258,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_xRs3AADfi","req":{"method":"POST","url":"/v1/credentials/1be551bd252c01dca81bf7a97e0b4b60d1564ba0be19b404d51f398aafa2dc16/revoke","id":"req_xRs3AADfi"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645290,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_2ETfb1M0D","req":{"method":"GET","url":"/v1/applications","id":"req_2ETfb1M0D"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645295,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_XJBbZoFl0","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_XJBbZoFl0"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645260,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_xRs3AADfi","hash":"1be551bd252c01dca81bf7a97e0b4b60d1564ba0be19b404d51f398aafa2dc16","reasonCode":1,"msg":"Credential revoked"}
+@oneid/api:test: {"level":30,"time":1793299645261,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_xRs3AADfi","res":{"statusCode":200},"responseTime":2.673357993364334,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645297,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_XJBbZoFl0","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645297,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_XJBbZoFl0","res":{"statusCode":200},"responseTime":1.9596889987587929,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645298,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_P6iKxvYC5","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_P6iKxvYC5"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645299,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_P6iKxvYC5","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645299,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_P6iKxvYC5","res":{"statusCode":200},"responseTime":1.4375770017504692,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645301,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_TZZBctyMk","req":{"method":"POST","url":"/v1/requests","id":"req_TZZBctyMk"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645303,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_TZZBctyMk","res":{"statusCode":201},"responseTime":2.033671997487545,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645303,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_UhdBfHMq8","req":{"method":"POST","url":"/v1/consents","id":"req_UhdBfHMq8"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645306,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_UhdBfHMq8","res":{"statusCode":201},"responseTime":2.3879219964146614,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645307,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_fU2ovvSIi","req":{"method":"POST","url":"/v1/verify/presentation","id":"req_fU2ovvSIi"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645310,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_q2yjH6c8N","req":{"method":"POST","url":"/v1/registry/entities","id":"req_q2yjH6c8N"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645222,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_QbloazveR","res":{"statusCode":400},"responseTime":2.389106996357441,"msg":"request completed"}
+@oneid/api:test: {"level":40,"time":1793299645251,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"UNAUTHENTICATED","requestId":"req_UR226l6xG","msg":"AppError: Missing or invalid session"}
+@oneid/api:test: {"level":30,"time":1793299645252,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_UR226l6xG","res":{"statusCode":401},"responseTime":1.3528280034661293,"msg":"request completed"}
+@oneid/api:test: {"level":40,"time":1793299645290,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"UNAUTHENTICATED","requestId":"req_2ETfb1M0D","msg":"AppError: Missing or invalid session"}
+@oneid/api:test: {"level":30,"time":1793299645292,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_2ETfb1M0D","res":{"statusCode":401},"responseTime":1.708797998726368,"msg":"request completed"}
+@oneid/api:test: {"level":40,"time":1793299645311,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"UNAUTHENTICATED","requestId":"req_q2yjH6c8N","msg":"AppError: Missing or invalid session"}
+@oneid/api:test: {"level":30,"time":1793299645332,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_VQGAZgQMc","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_VQGAZgQMc"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645308,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_fU2ovvSIi","res":{"statusCode":200},"responseTime":1.4090870022773743,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645333,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_VQGAZgQMc","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645334,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_VQGAZgQMc","res":{"statusCode":200},"responseTime":1.976781003177166,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645335,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_c0CgIdrvc","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_c0CgIdrvc"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645336,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_c0CgIdrvc","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645337,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_c0CgIdrvc","res":{"statusCode":200},"responseTime":1.4333629980683327,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645338,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_w3iXWtz0Z","req":{"method":"POST","url":"/v1/requests","id":"req_w3iXWtz0Z"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645340,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_w3iXWtz0Z","res":{"statusCode":201},"responseTime":1.747129999101162,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645340,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_3fRnWfPKm","req":{"method":"POST","url":"/v1/consents","id":"req_3fRnWfPKm"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645342,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_FzpaYVGeM","req":{"method":"GET","url":"/v1/audit/events","id":"req_FzpaYVGeM"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645343,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_3fRnWfPKm","res":{"statusCode":201},"responseTime":2.5729950070381165,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645343,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_1FHUQ2OFh","req":{"method":"POST","url":"/v1/consents/d46f7261768bba2162097cd60ee6f3a977db4c98c94fc80e1db688dd7591902c/withdraw","id":"req_1FHUQ2OFh"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645346,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_1FHUQ2OFh","res":{"statusCode":200},"responseTime":2.2994529977440834,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645347,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_2Hf2Ngt8S","req":{"method":"POST","url":"/v1/verify/presentation","id":"req_2Hf2Ngt8S"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645376,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_xGb2mtwwG","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_xGb2mtwwG"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645312,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_q2yjH6c8N","res":{"statusCode":401},"responseTime":1.7950760051608086,"msg":"request completed"}
+@oneid/api:test: {"level":40,"time":1793299645343,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"UNAUTHENTICATED","requestId":"req_FzpaYVGeM","msg":"AppError: Missing or invalid session"}
+@oneid/api:test: {"level":30,"time":1793299645344,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_FzpaYVGeM","res":{"statusCode":401},"responseTime":1.7966980040073395,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645380,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_zNxd5zxGH","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_zNxd5zxGH"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645348,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_2Hf2Ngt8S","res":{"statusCode":200},"responseTime":1.5418709963560104,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645381,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_zNxd5zxGH","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645381,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_zNxd5zxGH","res":{"statusCode":200},"responseTime":1.4903109967708588,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645382,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_kAReljkVn","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_kAReljkVn"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645383,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_kAReljkVn","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645383,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_kAReljkVn","res":{"statusCode":200},"responseTime":0.9631690010428429,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645385,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_ZABSFhU57","req":{"method":"POST","url":"/v1/requests","id":"req_ZABSFhU57"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645386,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_ZABSFhU57","res":{"statusCode":201},"responseTime":1.142866000533104,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645386,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_jRQyMGBtg","req":{"method":"POST","url":"/v1/consents","id":"req_jRQyMGBtg"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645387,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_jRQyMGBtg","res":{"statusCode":201},"responseTime":1.3785010054707527,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645388,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_iEUuCKc6e","req":{"method":"POST","url":"/v1/verify/presentation","id":"req_iEUuCKc6e"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645407,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_YV3yVbRCJ","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_YV3yVbRCJ"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645390,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_iEUuCKc6e","res":{"statusCode":200},"responseTime":2.02139700204134,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645409,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_YV3yVbRCJ","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645410,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_YV3yVbRCJ","res":{"statusCode":200},"responseTime":1.6408900022506714,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645410,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_0DeKd0WkK","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_0DeKd0WkK"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645411,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_0DeKd0WkK","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645411,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_0DeKd0WkK","res":{"statusCode":200},"responseTime":1.270346000790596,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645413,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_TDyPmz9r4","req":{"method":"POST","url":"/v1/requests","id":"req_TDyPmz9r4"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645414,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_TDyPmz9r4","res":{"statusCode":201},"responseTime":1.4843510016798973,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645415,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_wNnPfjfVd","req":{"method":"POST","url":"/v1/consents","id":"req_wNnPfjfVd"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645417,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_wNnPfjfVd","res":{"statusCode":201},"responseTime":1.8891750052571297,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645418,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_qmGgs1m1R","req":{"method":"POST","url":"/v1/verify/presentation","id":"req_qmGgs1m1R"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645425,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_xCDgqCCqc","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_xCDgqCCqc"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645379,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_xGb2mtwwG","role":"issuer","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645380,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_xGb2mtwwG","res":{"statusCode":200},"responseTime":2.8581419959664345,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645426,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_xCDgqCCqc","role":"issuer","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645427,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_xCDgqCCqc","res":{"statusCode":200},"responseTime":1.8520489931106567,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645427,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_lUGkd1jwK","req":{"method":"POST","url":"/v1/registry/entities","id":"req_lUGkd1jwK"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645443,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_nBrFRE101","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_nBrFRE101"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645420,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_qmGgs1m1R","res":{"statusCode":200},"responseTime":2.6928030028939247,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645444,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_nBrFRE101","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645445,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_peDdTgEBf","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_peDdTgEBf"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299645429,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"FORBIDDEN_ROLE","requestId":"req_lUGkd1jwK","msg":"AppError: Role 'issuer' is not allowed. Required: admin."}
+@oneid/api:test: {"level":30,"time":1793299645430,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_lUGkd1jwK","res":{"statusCode":403},"responseTime":2.3291229978203773,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645445,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_nBrFRE101","res":{"statusCode":200},"responseTime":1.6286970004439354,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645446,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_3qmCT0sw6","req":{"method":"POST","url":"/v1/credentials/issue","id":"req_3qmCT0sw6"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645467,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_peDdTgEBf","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645485,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_byXXL9W0X","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_byXXL9W0X"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299645450,"pid":166246,"hostname":"escelit-Latitude-E7240","code":"FORBIDDEN_ROLE","requestId":"req_3qmCT0sw6","msg":"AppError: Role 'citizen' is not allowed. Required: issuer."}
+@oneid/api:test: {"level":30,"time":1793299645452,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_3qmCT0sw6","res":{"statusCode":403},"responseTime":6.1398909986019135,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645486,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_byXXL9W0X","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645487,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_byXXL9W0X","res":{"statusCode":200},"responseTime":1.4771189987659454,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645488,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_U4E375CwK","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_U4E375CwK"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645489,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_U4E375CwK","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645489,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_U4E375CwK","res":{"statusCode":200},"responseTime":1.229095995426178,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645490,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_xbv3mWpU3","req":{"method":"POST","url":"/v1/corrections","id":"req_xbv3mWpU3"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645492,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_GxBVvpPZy","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_GxBVvpPZy"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645492,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_xbv3mWpU3","res":{"statusCode":201},"responseTime":2.062510997056961,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645492,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_bkbpecPOD","req":{"method":"POST","url":"/v1/corrections/f849aace-7a92-4aad-8231-f4e5b63bfd08/respond","id":"req_bkbpecPOD"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645469,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_peDdTgEBf","res":{"statusCode":200},"responseTime":23.38594399392605,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645469,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_62jlmCEvO","req":{"method":"GET","url":"/v1/audit/events","id":"req_62jlmCEvO"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299645470,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"FORBIDDEN_ROLE","requestId":"req_62jlmCEvO","msg":"AppError: Role 'verifier' is not allowed. Required: admin."}
+@oneid/api:test: {"level":30,"time":1793299645471,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_62jlmCEvO","res":{"statusCode":403},"responseTime":1.8299280032515526,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645493,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_GxBVvpPZy","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645494,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_GxBVvpPZy","res":{"statusCode":200},"responseTime":1.3904299959540367,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645495,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_qka0XiEBk","req":{"method":"POST","url":"/v1/credentials/issue","id":"req_qka0XiEBk"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645507,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_2DH6n61Ss","req":{"method":"GET","url":"/v1/identity/me","id":"req_2DH6n61Ss"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645519,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_XleLeCr0D","req":{"method":"GET","url":"/healthz","id":"req_XleLeCr0D"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299645496,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"FORBIDDEN_ROLE","requestId":"req_qka0XiEBk","msg":"AppError: Role 'verifier' is not allowed. Required: issuer."}
+@oneid/api:test: {"level":30,"time":1793299645496,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_qka0XiEBk","res":{"statusCode":403},"responseTime":1.4598329961299896,"msg":"request completed"}
+@oneid/api:test: {"level":40,"time":1793299645507,"pid":166247,"hostname":"escelit-Latitude-E7240","code":"UNAUTHENTICATED","requestId":"req_2DH6n61Ss","msg":"AppError: Missing or invalid session"}
+@oneid/api:test: {"level":30,"time":1793299645508,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_2DH6n61Ss","res":{"statusCode":401},"responseTime":0.8118549957871437,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645520,"pid":166247,"hostname":"escelit-Latitude-E7240","reqId":"req_XleLeCr0D","res":{"statusCode":200},"responseTime":0.6670290008187294,"msg":"request completed"}
+@oneid/api:test:  ✓ src/routes/auth.test.ts (16 tests) 656ms
+@oneid/api:test: {"level":30,"time":1793299645528,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_bilevsrwE","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_bilevsrwE"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645494,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_bkbpecPOD","res":{"statusCode":200},"responseTime":2.058296002447605,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645495,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Qq1tVxNKZ","req":{"method":"GET","url":"/v1/corrections/f849aace-7a92-4aad-8231-f4e5b63bfd08","id":"req_Qq1tVxNKZ"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645496,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Qq1tVxNKZ","res":{"statusCode":200},"responseTime":0.9533300027251244,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645533,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_bilevsrwE","role":"admin","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299645534,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_bilevsrwE","res":{"statusCode":200},"responseTime":5.181285001337528,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645535,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_XssUKrMm5","req":{"method":"POST","url":"/v1/admin/simulate/failure","id":"req_XssUKrMm5"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299645536,"pid":166246,"hostname":"escelit-Latitude-E7240","code":"CHAIN_UNAVAILABLE","requestId":"req_XssUKrMm5","msg":"AppError: [SIMULATED] RPC is down."}
+@oneid/api:test: {"level":30,"time":1793299645537,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_XssUKrMm5","res":{"statusCode":503},"responseTime":2.664843000471592,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299645538,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Uq8Ly7a8p","req":{"method":"GET","url":"/v1/admin/health","id":"req_Uq8Ly7a8p"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299645539,"pid":166246,"hostname":"escelit-Latitude-E7240","reqId":"req_Uq8Ly7a8p","res":{"statusCode":200},"responseTime":0.8879989981651306,"msg":"request completed"}
+@oneid/api:test:  ✓ src/journeys-integration.test.ts (11 tests) 646ms
+@oneid/api:test:  ✓ src/indexer/worker.test.ts (9 tests) 22ms
+@oneid/api:test:  ✓ src/plugins/errors.test.ts (10 tests) 20ms
+@oneid/api:test: {"level":30,"time":1793299648010,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_NAdLAiCit","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_NAdLAiCit"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648022,"pid":166371,"hostname":"escelit-Latitude-E7240","reqId":"req_AH0uDk2MJ","req":{"method":"GET","url":"/healthz","id":"req_AH0uDk2MJ"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648025,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_NAdLAiCit","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299648033,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_NAdLAiCit","res":{"statusCode":200},"responseTime":20.407329998910427,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648036,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_faOZDVSNb","req":{"method":"POST","url":"/v1/corrections","id":"req_faOZDVSNb"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648048,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_faOZDVSNb","res":{"statusCode":201},"responseTime":11.361887000501156,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648051,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_pBfd45I7U","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_pBfd45I7U"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648052,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_pBfd45I7U","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299648053,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_pBfd45I7U","res":{"statusCode":200},"responseTime":1.6386850029230118,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648054,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_pNvaNrpDz","req":{"method":"POST","url":"/v1/corrections/9ccc6da8-cdaa-4c5a-9466-841941c60de7/respond","id":"req_pNvaNrpDz"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648057,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_pNvaNrpDz","res":{"statusCode":200},"responseTime":3.271108999848366,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648059,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_hGt5MQHIj","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_hGt5MQHIj"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648060,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_hGt5MQHIj","role":"issuer","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299648061,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_hGt5MQHIj","res":{"statusCode":200},"responseTime":1.604644000530243,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648062,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_wCCh3t5nZ","req":{"method":"POST","url":"/v1/corrections/9ccc6da8-cdaa-4c5a-9466-841941c60de7/respond","id":"req_wCCh3t5nZ"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648077,"pid":166371,"hostname":"escelit-Latitude-E7240","reqId":"req_Dq3UcLoQL","req":{"method":"GET","url":"/readyz","id":"req_Dq3UcLoQL"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648100,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_lQ85KM6W6","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_lQ85KM6W6"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299648065,"pid":166344,"hostname":"escelit-Latitude-E7240","code":"FORBIDDEN_ROLE","requestId":"req_wCCh3t5nZ","msg":"AppError: An institution cannot update another institution's correction status."}
+@oneid/api:test: {"level":30,"time":1793299648066,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_wCCh3t5nZ","res":{"statusCode":403},"responseTime":4.091561004519463,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648104,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_lQ85KM6W6","role":"citizen","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299648106,"pid":166371,"hostname":"escelit-Latitude-E7240","reqId":"req_lUvZmVhOF","req":{"method":"GET","url":"/healthz","id":"req_lUvZmVhOF"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648106,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_lQ85KM6W6","res":{"statusCode":200},"responseTime":5.098047003149986,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648109,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_lX0AALeKD","req":{"method":"POST","url":"/v1/corrections","id":"req_lX0AALeKD"},"msg":"incoming request"}
+@oneid/api:test:  ✓ src/pii-scan.test.ts (4 tests) 19ms
+@oneid/api:test: {"level":30,"time":1793299648116,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_lX0AALeKD","res":{"statusCode":201},"responseTime":7.715580001473427,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648117,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_bM6UcYuYV","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_bM6UcYuYV"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648120,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_bM6UcYuYV","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299648120,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_bM6UcYuYV","res":{"statusCode":200},"responseTime":2.9537810012698174,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648122,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_A8lGTnZ08","req":{"method":"POST","url":"/v1/corrections/3e49983a-6412-45b1-bccc-bbb626b2bda4/respond","id":"req_A8lGTnZ08"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648124,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_A8lGTnZ08","res":{"statusCode":200},"responseTime":1.5299400016665459,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648124,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_5fVjJP5pD","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_5fVjJP5pD"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648126,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_5fVjJP5pD","role":"verifier","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299648126,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_5fVjJP5pD","res":{"statusCode":200},"responseTime":1.9676049947738647,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648127,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_fzaork3nE","req":{"method":"POST","url":"/v1/corrections/3e49983a-6412-45b1-bccc-bbb626b2bda4/respond","id":"req_fzaork3nE"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648151,"pid":166371,"hostname":"escelit-Latitude-E7240","reqId":"req_dEX7Bynps","req":{"method":"GET","url":"/v1/identity/me","id":"req_dEX7Bynps"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648156,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_wAXgaINBH","req":{"method":"POST","url":"/v1/auth/portal/login","id":"req_wAXgaINBH"},"msg":"incoming request"}
+@oneid/api:test:  ✓ src/index.test.ts (4 tests) 274ms
+@oneid/api:test: {"level":30,"time":1793299648035,"pid":166371,"hostname":"escelit-Latitude-E7240","reqId":"req_AH0uDk2MJ","res":{"statusCode":200},"responseTime":10.10198899358511,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648079,"pid":166371,"hostname":"escelit-Latitude-E7240","reqId":"req_Dq3UcLoQL","res":{"statusCode":200},"responseTime":1.4185470044612885,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648107,"pid":166371,"hostname":"escelit-Latitude-E7240","reqId":"req_lUvZmVhOF","res":{"statusCode":200},"responseTime":0.9682969972491264,"msg":"request completed"}
+@oneid/api:test: {"level":40,"time":1793299648153,"pid":166371,"hostname":"escelit-Latitude-E7240","code":"UNAUTHENTICATED","requestId":"req_dEX7Bynps","msg":"AppError: Missing or invalid session"}
+@oneid/api:test: {"level":30,"time":1793299648154,"pid":166371,"hostname":"escelit-Latitude-E7240","reqId":"req_dEX7Bynps","res":{"statusCode":401},"responseTime":2.7967320010066032,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648130,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_fzaork3nE","res":{"statusCode":200},"responseTime":2.391991004347801,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648130,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_KuoSknbWN","req":{"method":"GET","url":"/v1/corrections/3e49983a-6412-45b1-bccc-bbb626b2bda4","id":"req_KuoSknbWN"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648132,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_KuoSknbWN","res":{"statusCode":200},"responseTime":1.5929799973964691,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648161,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_wAXgaINBH","role":"admin","msg":"Portal login successful"}
+@oneid/api:test: {"level":30,"time":1793299648163,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_wAXgaINBH","res":{"statusCode":200},"responseTime":5.516681998968124,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648164,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_lgOcSxJWs","req":{"method":"POST","url":"/v1/admin/simulate/failure","id":"req_lgOcSxJWs"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299648165,"pid":166344,"hostname":"escelit-Latitude-E7240","code":"FORBIDDEN_ROLE","requestId":"req_lgOcSxJWs","msg":"AppError: Simulated failures are disabled. Set FEATURE_SIMULATED_FAILURES=true."}
+@oneid/api:test: {"level":30,"time":1793299648166,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_lgOcSxJWs","res":{"statusCode":403},"responseTime":1.8439220041036606,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648167,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_ahN8fCqGn","req":{"method":"POST","url":"/v1/admin/simulate/failure","id":"req_ahN8fCqGn"},"msg":"incoming request"}
+@oneid/api:test: {"level":40,"time":1793299648168,"pid":166344,"hostname":"escelit-Latitude-E7240","code":"CHAIN_UNAVAILABLE","requestId":"req_ahN8fCqGn","msg":"AppError: [SIMULATED] RPC is down."}
+@oneid/api:test: {"level":30,"time":1793299648168,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_ahN8fCqGn","res":{"statusCode":503},"responseTime":1.3099939972162247,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648169,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_4uKLxoArJ","req":{"method":"POST","url":"/v1/admin/simulate/failure","id":"req_4uKLxoArJ"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648170,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_4uKLxoArJ","res":{"statusCode":207},"responseTime":1.5280750021338463,"msg":"request completed"}
+@oneid/api:test: {"level":30,"time":1793299648171,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_O55ukEdPu","req":{"method":"GET","url":"/v1/admin/health","id":"req_O55ukEdPu"},"msg":"incoming request"}
+@oneid/api:test: {"level":30,"time":1793299648173,"pid":166344,"hostname":"escelit-Latitude-E7240","reqId":"req_O55ukEdPu","res":{"statusCode":200},"responseTime":1.421355001628399,"msg":"request completed"}
+@oneid/api:test:  ✓ src/routes/corrections.test.ts (3 tests) 282ms
+@oneid/api:test:  ✓ src/db/schema.test.ts (4 tests) 8ms
+@oneid/api:test: 
+@oneid/api:test:  Test Files  9 passed (9)
+@oneid/api:test:       Tests  66 passed (66)
+@oneid/api:test:    Start at  19:47:21
+@oneid/api:test:    Duration  7.35s (transform 1.07s, setup 0ms, collect 13.23s, tests 2.26s, environment 3ms, prepare 1.83s)
+@oneid/api:test: 
+
+ Tasks:    14 successful, 14 total
+Cached:    13 cached, 14 total
+  Time:    8.639s 
+
+ WARNING  no output files found for task @oneid/api#test. Please check your `outputs` key in `turbo.json`
