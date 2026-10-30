@@ -87,6 +87,7 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
   declareRouteRoles("POST", "/v1/auth/login/options", "public");
   declareRouteRoles("POST", "/v1/auth/login/verify", "public");
   declareRouteRoles("POST", "/v1/auth/portal/login", "public");
+  declareRouteRoles("GET", "/v1/auth/me", "public");
   declareRouteRoles("POST", "/v1/auth/logout", [
     "citizen",
     "issuer",
@@ -310,6 +311,24 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
     app.log.info({ reqId: request.id, role }, "Portal login successful");
 
     return reply.send({ ok: true, role, userId: portalUser.id });
+  });
+
+  // ── GET /v1/auth/me ─────────────────────────────────────────────────────
+  app.get("/v1/auth/me", async (request, reply) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const user = (request as any).session?.user;
+    if (!user) {
+      return reply.send({ authenticated: false });
+    }
+    return reply.send({
+      authenticated: true,
+      user: {
+        id: user.userId,
+        userId: user.userId,
+        role: user.role,
+        stellarAddress: user.stellarAddress,
+      },
+    });
   });
 
   // ── POST /v1/auth/logout ───────────────────────────────────────────────

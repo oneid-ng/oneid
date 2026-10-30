@@ -5,8 +5,12 @@ test.describe("Anchor Onboarding Flow (README §16, §21)", () => {
     page,
   }) => {
     await page.goto("/anchor");
-    await expect(page.getByText("Mock Anchor — SEP-24 Onboarding")).toBeVisible();
-    await expect(page.getByText("SEP-style demo")).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Mock Anchor — SEP-24 Onboarding" }),
+    ).toBeVisible();
+    await expect(page.getByRole("region", { name: "Demo notice" })).toContainText(
+      "SEP-STYLE DEMO",
+    );
 
     // Start deposit
     await page.click("#btn-start-deposit");

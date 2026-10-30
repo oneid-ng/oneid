@@ -62,23 +62,32 @@ export default function CorrectionTimelinePage({
           })),
         );
       } else {
-        // Fallback demo multi-institution timeline showing applied + rejected + partially_applied states
+        // Fallback demo multi-institution timeline showing applied + rejected + partially_applied states (README §18.4)
         setOutcomes([
           {
-            institutionId: "inst-01",
-            institutionName: "First Demo Bank",
-            homeDomain: "bank.demo.oneid.local",
+            institutionId: "inst-authority",
+            institutionName: "Identity Management Authority (NIMC)",
+            homeDomain: "authority.demo.oneid.local",
             status: "applied",
-            reasonCode: "ADDRESS_UPDATED_IN_CORE_BANKING",
+            reasonCode: "NIN_RECORD_UPDATED_ON_CHAIN",
+            chainTx: "0x12ab...34cd",
+            updatedAt: new Date().toISOString(),
+          },
+          {
+            institutionId: "inst-bank",
+            institutionName: "Apex Trust Bank",
+            homeDomain: "bank.demo.oneid.local",
+            status: "rejected",
+            reasonCode: "PROOF_OF_ADDRESS_DISCREPANCY",
             chainTx: "0x78ab...90ef",
             updatedAt: new Date().toISOString(),
           },
           {
-            institutionId: "inst-02",
+            institutionId: "inst-telecom",
             institutionName: "Demo Telecom Nigeria",
             homeDomain: "telecom.demo.oneid.local",
-            status: "rejected",
-            reasonCode: "PROOF_OF_ADDRESS_REQUIRED",
+            status: "partially_applied",
+            reasonCode: "SIM_RE_REGISTRATION_IN_PROGRESS",
             chainTx: "0x45cd...1234",
             updatedAt: new Date().toISOString(),
           },

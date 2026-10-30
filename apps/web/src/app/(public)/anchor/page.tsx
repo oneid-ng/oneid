@@ -155,6 +155,7 @@ export default function AnchorDemoPage() {
                     <input
                       type="radio"
                       name="kycOption"
+                      value="valid"
                       checked={kycOption === "valid"}
                       onChange={() => setKycOption("valid")}
                     />{" "}
@@ -164,6 +165,7 @@ export default function AnchorDemoPage() {
                     <input
                       type="radio"
                       name="kycOption"
+                      value="withdrawn"
                       checked={kycOption === "withdrawn"}
                       onChange={() => setKycOption("withdrawn")}
                     />{" "}
@@ -173,6 +175,7 @@ export default function AnchorDemoPage() {
                     <input
                       type="radio"
                       name="kycOption"
+                      value="revoked"
                       checked={kycOption === "revoked"}
                       onChange={() => setKycOption("revoked")}
                     />{" "}

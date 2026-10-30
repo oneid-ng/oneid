@@ -51,7 +51,8 @@ export class OneIdClient {
   constructor(options: ClientOptions = {}) {
     const isBrowser = typeof globalThis !== "undefined" && "window" in globalThis;
     this.baseUrl = options.baseUrl ?? (isBrowser ? "" : "http://localhost:4000");
-    this.fetchFn = options.fetchFn ?? fetch;
+    const rawFetch = options.fetchFn ?? globalThis.fetch;
+    this.fetchFn = typeof rawFetch === "function" ? rawFetch.bind(globalThis) : rawFetch;
   }
 
   private async request<T>(path: string, init?: RequestInit): Promise<T> {
