@@ -32,6 +32,24 @@ import { eq } from "drizzle-orm";
 // Keyed by username or userId; expires after 5 minutes in prod, unlimited here.
 const challengeStore = new Map<string, string>();
 
+// ── In-memory rate limiter on auth routes (README §20) ────────────────────
+const authRateLimits = new Map<string, { count: number; resetAt: number }>();
+
+function checkAuthRateLimit(clientIp: string, maxAttempts = 30, windowMs = 60_000) {
+  const now = Date.now();
+  const entry = authRateLimits.get(clientIp);
+  if (!entry || now > entry.resetAt) {
+    authRateLimits.set(clientIp, { count: 1, resetAt: now + windowMs });
+    return;
+  }
+  if (entry.count >= maxAttempts) {
+    throw Errors.validationError(
+      "Too many authentication attempts. Please try again later.",
+    );
+  }
+  entry.count++;
+}
+
 // ── Demo portal credentials (never log demoKey) ───────────────────────────
 function getDemoKey(role: string): string | undefined {
   switch (role) {
@@ -97,6 +115,7 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
 
   // ── POST /v1/auth/register/options ─────────────────────────────────────
   app.post("/v1/auth/register/options", async (request, reply) => {
+    checkAuthRateLimit(request.ip);
     const parsed = RegisterOptionsBody.safeParse(request.body);
     if (!parsed.success) {
       throw Errors.validationError(parsed.error.message);
@@ -194,6 +213,7 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
 
   // ── POST /v1/auth/login/options ────────────────────────────────────────
   app.post("/v1/auth/login/options", async (request, reply) => {
+    checkAuthRateLimit(request.ip);
     const parsed = LoginOptionsBody.safeParse(request.body);
     if (!parsed.success) {
       throw Errors.validationError(parsed.error.message);
@@ -260,6 +280,7 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
 
   // ── POST /v1/auth/portal/login ─────────────────────────────────────────
   app.post("/v1/auth/portal/login", async (request, reply) => {
+    checkAuthRateLimit(request.ip);
     const parsed = PortalLoginBody.safeParse(request.body);
     if (!parsed.success) {
       throw Errors.validationError(parsed.error.message);
