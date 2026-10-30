@@ -239,7 +239,25 @@ export default function WelcomePage() {
               </Button>
             </div>
 
-            <div style={{ marginTop: "0.5rem", textAlign: "center" }}>
+            <div
+              style={{
+                marginTop: "0.5rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.25rem",
+                textAlign: "center",
+              }}
+            >
+              <Link
+                href="/anchor"
+                style={{
+                  fontSize: tokens.typography.fontSize.xs,
+                  color: tokens.color.teal,
+                  textDecoration: "underline",
+                }}
+              >
+                Mock Anchor SEP-24 Onboarding Demo (README §16)
+              </Link>
               <Link
                 href="/exceptions"
                 style={{

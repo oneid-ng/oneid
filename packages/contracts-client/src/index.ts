@@ -218,6 +218,9 @@ export async function isActiveIssuer(
   address: string,
   network = "local",
 ): Promise<boolean> {
+  if (mockStatusOverrides.issuers.has(address)) {
+    return mockStatusOverrides.issuers.get(address)!;
+  }
   try {
     const client = getIssuerRegistryClient();
     const result = await client.is_active_issuer({ addr: address });
@@ -242,6 +245,10 @@ export async function isActiveVerifier(
   address: string,
   network = "local",
 ): Promise<boolean> {
+  // Check override/mock first
+  if (mockStatusOverrides.verifiers.has(address)) {
+    return mockStatusOverrides.verifiers.get(address)!;
+  }
   try {
     const client = getIssuerRegistryClient();
     const result = await client.is_active_verifier({ addr: address });
@@ -255,5 +262,126 @@ export async function isActiveVerifier(
     } catch {
       return false;
     }
+  }
+}
+
+// ── In-memory mock/override registry for testing edge cases ─────────────────
+export const mockStatusOverrides = {
+  issuers: new Map<string, boolean>(),
+  verifiers: new Map<string, boolean>(),
+  credentials: new Map<string, "Active" | "Revoked" | "Expired">(),
+  consents: new Map<string, "Active" | "Withdrawn" | "Expired">(),
+  reset() {
+    this.issuers.clear();
+    this.verifiers.clear();
+    this.credentials.clear();
+    this.consents.clear();
+  },
+};
+
+/**
+ * Helper to check if a credential is active on-chain on credential-status contract.
+ * Fails closed (returns false) if status is Revoked, Expired, or query fails.
+ */
+export async function isCredentialActive(
+  credentialHash: string,
+  _network = "local",
+): Promise<boolean> {
+  const normHash = credentialHash.replace(/^0x/, "").toLowerCase();
+  if (mockStatusOverrides.credentials.has(normHash)) {
+    return mockStatusOverrides.credentials.get(normHash) === "Active";
+  }
+
+  try {
+    const client = getCredentialStatusClient();
+    const buf = Buffer.from(normHash.padStart(64, "0").slice(0, 64), "hex");
+    const result = await client.status({ hash: buf });
+    // Check if result is "Active" or object representation
+    const resVal = result?.result as unknown;
+    if (
+      resVal === "Active" ||
+      (typeof resVal === "object" &&
+        resVal !== null &&
+        "tag" in resVal &&
+        (resVal as { tag: string }).tag === "Active")
+    ) {
+      return true;
+    }
+    // Handle Ok/Err wrapper if present
+    if (
+      resVal &&
+      typeof resVal === "object" &&
+      "unwrap" in resVal &&
+      typeof (resVal as { unwrap: () => unknown }).unwrap === "function"
+    ) {
+      try {
+        const unwrapped = (resVal as { unwrap: () => unknown }).unwrap();
+        return (
+          unwrapped === "Active" ||
+          (typeof unwrapped === "object" &&
+            unwrapped !== null &&
+            "tag" in unwrapped &&
+            (unwrapped as { tag: string }).tag === "Active")
+        );
+      } catch {
+        return false;
+      }
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Helper to check if a consent receipt is active on-chain on consent-registry contract.
+ * Fails closed (returns false) if status is Withdrawn, Expired, or query fails.
+ */
+export async function isConsentActive(
+  receiptHash: string,
+  _network = "local",
+): Promise<boolean> {
+  const normHash = receiptHash.replace(/^0x/, "").toLowerCase();
+  if (mockStatusOverrides.consents.has(normHash)) {
+    return mockStatusOverrides.consents.get(normHash) === "Active";
+  }
+
+  try {
+    const client = getConsentRegistryClient();
+    const buf = Buffer.from(normHash.padStart(64, "0").slice(0, 64), "hex");
+    const result = await client.status({ receipt_hash: buf });
+    const resVal = result?.result as unknown;
+    if (
+      resVal === "Active" ||
+      (typeof resVal === "object" &&
+        resVal !== null &&
+        "tag" in resVal &&
+        (resVal as { tag: string }).tag === "Active")
+    ) {
+      return true;
+    }
+    // Handle Ok/Err wrapper if present
+    if (
+      resVal &&
+      typeof resVal === "object" &&
+      "unwrap" in resVal &&
+      typeof (resVal as { unwrap: () => unknown }).unwrap === "function"
+    ) {
+      try {
+        const unwrapped = (resVal as { unwrap: () => unknown }).unwrap();
+        return (
+          unwrapped === "Active" ||
+          (typeof unwrapped === "object" &&
+            unwrapped !== null &&
+            "tag" in unwrapped &&
+            (unwrapped as { tag: string }).tag === "Active")
+        );
+      } catch {
+        return false;
+      }
+    }
+    return false;
+  } catch {
+    return false;
   }
 }

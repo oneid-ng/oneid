@@ -113,12 +113,27 @@ importers:
       "@fastify/sensible":
         specifier: 6.0.3
         version: 6.0.3
+      "@oneid/contracts-client":
+        specifier: workspace:*
+        version: link:../../packages/contracts-client
       "@oneid/shared":
         specifier: workspace:*
         version: link:../../packages/shared
+      "@oneid/stellar":
+        specifier: workspace:*
+        version: link:../../packages/stellar
+      "@oneid/vc":
+        specifier: workspace:*
+        version: link:../../packages/vc
+      "@stellar/stellar-sdk":
+        specifier: 13.3.0
+        version: 13.3.0
       fastify:
         specifier: 5.3.3
         version: 5.3.3
+      zod:
+        specifier: 3.25.51
+        version: 3.25.51
     devDependencies:
       "@oneid/eslint-config":
         specifier: workspace:*
@@ -141,12 +156,27 @@ importers:
       "@fastify/sensible":
         specifier: 6.0.3
         version: 6.0.3
+      "@oneid/contracts-client":
+        specifier: workspace:*
+        version: link:../../packages/contracts-client
       "@oneid/shared":
         specifier: workspace:*
         version: link:../../packages/shared
+      "@oneid/stellar":
+        specifier: workspace:*
+        version: link:../../packages/stellar
+      "@oneid/vc":
+        specifier: workspace:*
+        version: link:../../packages/vc
+      "@stellar/stellar-sdk":
+        specifier: 13.3.0
+        version: 13.3.0
       fastify:
         specifier: 5.3.3
         version: 5.3.3
+      zod:
+        specifier: 3.25.51
+        version: 3.25.51
     devDependencies:
       "@oneid/eslint-config":
         specifier: workspace:*
