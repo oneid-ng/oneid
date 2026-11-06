@@ -24,7 +24,7 @@
  *   Drops all mirrored state and reprocesses all events from ledger 0.
  */
 
-import type { rpc as SorobanRpc } from "@stellar/stellar-sdk";
+import { type rpc as SorobanRpc, scValToNative, type xdr } from "@stellar/stellar-sdk";
 import { eq, and, ne } from "drizzle-orm";
 import { getDb } from "../db/index.js";
 import {
@@ -37,6 +37,21 @@ import {
 } from "../db/schema.js";
 import { appendAuditEvent } from "../lib/audit.js";
 import { resolveNetwork, getRpcServer } from "@oneid/stellar";
+
+/**
+ * Safely decode an ScVal into a native JS value, with fallback for already-native values.
+ */
+export function decodeScVal(val: unknown): unknown {
+  if (!val) return val;
+  if (typeof val === "object" && "switch" in (val as Record<string, unknown>)) {
+    try {
+      return scValToNative(val as xdr.ScVal);
+    } catch {
+      return val;
+    }
+  }
+  return val;
+}
 
 // ── Contract IDs (from env / deployment manifest) ─────────────────────────
 
@@ -72,33 +87,49 @@ export async function processEvent(
   // Extract event topic (first element is the event name as a symbol)
   const topics = event.topic ?? [];
   const nameTopic = topics[0];
+  const secondTopic = topics[1];
 
-  // Decode the event name — Soroban emits topics as XDR ScVal
-  // In the test environment we work with string representations
+  // Decode the event name — supports both native ScVal and mock string topics
   let eventName = "";
   try {
-    // The topic is an xdr.ScVal — decode via toString or use the value directly
-    // In practice the generated bindings do this; here we parse the string form
-    const topicStr = JSON.stringify(nameTopic ?? "");
-    if (topicStr.includes("registered")) eventName = "registered";
-    else if (topicStr.includes("status_changed")) eventName = "status_changed";
-    else if (topicStr.includes("issued")) eventName = "issued";
-    else if (topicStr.includes("revoked")) eventName = "revoked";
-    else if (topicStr.includes("granted")) eventName = "granted";
-    else if (topicStr.includes("withdrawn")) eventName = "withdrawn";
-    else if (topicStr.includes("opened")) eventName = "opened";
-    else if (topicStr.includes("outcome_updated")) eventName = "outcome_updated";
+    const decodedName = decodeScVal(nameTopic);
+    let str = "";
+    if (typeof decodedName === "string") {
+      str = decodedName.replace(/^["']|["']$/g, "");
+    } else if (typeof decodedName === "symbol") {
+      str = decodedName.description ?? "";
+    } else {
+      str = JSON.stringify(nameTopic ?? "");
+    }
+
+    if (str.includes("registered")) eventName = "registered";
+    else if (str.includes("status_changed")) eventName = "status_changed";
+    else if (str.includes("issued")) eventName = "issued";
+    else if (str.includes("revoked")) eventName = "revoked";
+    else if (str.includes("granted")) eventName = "granted";
+    else if (str.includes("withdrawn")) eventName = "withdrawn";
+    else if (str.includes("opened")) eventName = "opened";
+    else if (str.includes("outcome_updated")) eventName = "outcome_updated";
+    else eventName = str;
   } catch {
     eventName = "";
   }
 
+  const secondTopicDecoded = decodeScVal(secondTopic);
+  const secondTopicHash = Buffer.isBuffer(secondTopicDecoded)
+    ? secondTopicDecoded.toString("hex")
+    : typeof secondTopicDecoded === "string"
+      ? secondTopicDecoded
+      : undefined;
+
+  const rawData = decodeScVal(event.value);
   const contractIds = getContractIds();
 
   // ── issuer-registry events ──────────────────────────────────────────
   if (contractId === contractIds.issuerRegistry) {
     if (eventName === "status_changed") {
       // data: { addr, status }
-      const data = event.value as unknown as {
+      const data = rawData as {
         addr?: string;
         status?: string;
       } | null;
@@ -132,8 +163,8 @@ export async function processEvent(
   // ── credential-status events ────────────────────────────────────────
   if (contractId === contractIds.credentialStatus) {
     if (eventName === "revoked") {
-      const data = event.value as unknown as { hash?: string } | null;
-      const hash = data?.hash;
+      const data = rawData as { hash?: string } | null;
+      const hash = data?.hash ?? secondTopicHash;
       if (hash) {
         await db
           .update(credentials)
@@ -153,8 +184,8 @@ export async function processEvent(
   // ── consent-registry events ─────────────────────────────────────────
   if (contractId === contractIds.consentRegistry) {
     if (eventName === "withdrawn") {
-      const data = event.value as unknown as { receipt_hash?: string } | null;
-      const receiptHash = data?.receipt_hash;
+      const data = rawData as { receipt_hash?: string } | null;
+      const receiptHash = data?.receipt_hash ?? secondTopicHash;
       if (receiptHash) {
         await db
           .update(consents)
@@ -174,13 +205,13 @@ export async function processEvent(
   // ── correction-tracker events ───────────────────────────────────────
   if (contractId === contractIds.correctionTracker) {
     if (eventName === "outcome_updated") {
-      const data = event.value as unknown as {
+      const data = rawData as {
         ticket_hash?: string;
         institution?: string;
         status?: string;
         reason_code?: number;
       } | null;
-      const ticketHash = data?.ticket_hash;
+      const ticketHash = data?.ticket_hash ?? secondTopicHash;
       const institution = data?.institution;
       const outcomeStatus = data?.status;
       if (ticketHash && institution && outcomeStatus) {

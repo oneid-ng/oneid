@@ -232,6 +232,26 @@ describe("Indexer — idempotency", () => {
     expect(handled1).toBe(true);
     expect(handled2).toBe(true);
   });
+
+  it("processes events with native ScVal topics and values", async () => {
+    const { nativeToScVal } = await import("@stellar/stellar-sdk");
+    process.env["CREDENTIAL_STATUS_ID"] = "CTEST_CRED_ID";
+
+    const event = {
+      type: "contract" as const,
+      ledger: 101,
+      ledgerClosedAt: new Date().toISOString(),
+      id: "event-scval-1",
+      pagingToken: "2",
+      inSuccessfulContractCall: true,
+      contractId: "CTEST_CRED_ID",
+      topic: [nativeToScVal("revoked"), nativeToScVal(Buffer.from("def456", "utf8"))],
+      value: nativeToScVal({ hash: "def456" }),
+    } as unknown as Parameters<typeof processEvent>[1];
+
+    const handled = await processEvent("CTEST_CRED_ID", event);
+    expect(handled).toBe(true);
+  });
 });
 
 describe("Indexer — cursor resumability", () => {
