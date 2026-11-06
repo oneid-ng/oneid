@@ -15,6 +15,7 @@ import {
   type OnChainStatus,
 } from "@oneid/ui";
 import { api } from "@/lib/api";
+import { CredentialVault } from "@/lib/credential-store";
 
 interface CredentialItem {
   id: string;
@@ -36,25 +37,59 @@ export default function CredentialsPage() {
     setLoading(true);
     setError(null);
     try {
+      // 1. Load from client encrypted vault
+      const vaultCreds = await CredentialVault.list();
+
+      // 2. Query server for active credentials
       const res = await api.identity.getCredentials().catch(() => ({ credentials: [] }));
       if (res.credentials && res.credentials.length > 0) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const mapped = res.credentials.map((c: any) => ({
+          id: c.id,
+          credentialHash:
+            c.credential_hash ||
+            c.credentialHash ||
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          issuerName: "National Identity Issuer (Demo)",
+          issuerDomain: "issuer.demo.oneid.local",
+          status: (c.status as OnChainStatus) || "active",
+          expiresAt:
+            c.expires_at ||
+            c.expiresAt ||
+            new Date(Date.now() + 86400000 * 365).toISOString(),
+          chainTx: c.chain_tx || c.chainTx || "mock-tx-001",
+          ledger: c.ledger || 1042,
+        }));
+
+        setCredentials(mapped);
+
+        // Synchronize and persist locally in client encrypted vault
+        for (const item of mapped) {
+          await CredentialVault.save({
+            id: item.id,
+            credentialHash: item.credentialHash,
+            issuerName: item.issuerName,
+            issuerDomain: item.issuerDomain,
+            sdJwt: "",
+            claims: {},
+            status: item.status as "active" | "revoked" | "expired",
+            expiresAt: item.expiresAt,
+            issuedAt: new Date().toISOString(),
+            chainTx: item.chainTx,
+            ledger: item.ledger,
+          });
+        }
+      } else if (vaultCreds.length > 0) {
         setCredentials(
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          res.credentials.map((c: any) => ({
-            id: c.id,
-            credentialHash:
-              c.credential_hash ||
-              c.credentialHash ||
-              "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            issuerName: "National Identity Issuer (Demo)",
-            issuerDomain: "issuer.demo.oneid.local",
-            status: (c.status as OnChainStatus) || "active",
-            expiresAt:
-              c.expires_at ||
-              c.expiresAt ||
-              new Date(Date.now() + 86400000 * 365).toISOString(),
-            chainTx: c.chain_tx || c.chainTx || "mock-tx-001",
-            ledger: c.ledger || 1042,
+          vaultCreds.map((vc) => ({
+            id: vc.id,
+            credentialHash: vc.credentialHash,
+            issuerName: vc.issuerName,
+            issuerDomain: vc.issuerDomain,
+            status: vc.status,
+            expiresAt: vc.expiresAt,
+            chainTx: vc.chainTx,
+            ledger: vc.ledger,
           })),
         );
       } else {

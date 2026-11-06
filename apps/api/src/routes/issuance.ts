@@ -31,7 +31,7 @@ import {
 import { getDb } from "../db/index.js";
 import { users, entities, credentials } from "../db/schema.js";
 import { appendAuditEvent } from "../lib/audit.js";
-import { issueCredential } from "@oneid/vc";
+import { issueCredential, generateKeyPair } from "@oneid/vc";
 import { submitTransaction, resolveNetwork, getRpcServer } from "@oneid/stellar";
 import { Keypair } from "@stellar/stellar-sdk";
 
@@ -41,6 +41,7 @@ const IssueCredentialBody = z.object({
   applicationId: z.string().uuid().optional(),
   holderUserId: z.string().uuid(),
   claims: z.array(z.string()).min(1),
+  holderPublicKey: z.record(z.unknown()).optional(),
   validityDays: z
     .number()
     .int()
@@ -135,8 +136,15 @@ export async function issuanceRoutes(app: FastifyInstance): Promise<void> {
       const issuerPrivateKey = JSON.parse(signingKeyJwk) as Record<string, unknown>;
       const expiresAt = new Date(Date.now() + validityDays * 24 * 60 * 60 * 1000);
 
-      // Issue SD-JWT VC (README §13.1). holderPublicKey = issuer key for MVP demo;
-      // real holder binding via cnf is a Phase 3 enhancement tracked in ADR-0003.
+      // Issue SD-JWT VC (README §13.1). Bind to citizen holder public key (ADR-0003).
+      const resolvedHolderPublicKey =
+        parsed.data.holderPublicKey ??
+        ((holder.synthetic_profile as Record<string, unknown>)?.["holderKey"] as Record<
+          string,
+          unknown
+        >) ??
+        generateKeyPair().publicKey;
+
       const vc = issueCredential({
         issuer: `did:web:${issuerEntity.home_domain}`,
         subject: `did:stellar:local:${holder.stellar_address ?? holderUserId}`,
@@ -144,7 +152,7 @@ export async function issuanceRoutes(app: FastifyInstance): Promise<void> {
         issuerPrivateKey: issuerPrivateKey as Parameters<
           typeof issueCredential
         >[0]["issuerPrivateKey"],
-        holderPublicKey: issuerPrivateKey as Parameters<
+        holderPublicKey: resolvedHolderPublicKey as Parameters<
           typeof issueCredential
         >[0]["holderPublicKey"],
         credentialStatusContractId: process.env["CREDENTIAL_STATUS_ID"] ?? "UNSET",
