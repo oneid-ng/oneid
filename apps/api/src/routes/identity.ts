@@ -25,9 +25,14 @@ import {
 import { getDb } from "../db/index.js";
 import { users, entities, applications, credentials } from "../db/schema.js";
 import { appendAuditEvent } from "../lib/audit.js";
+import {
+  getIdentityProvider,
+  getLivenessProvider,
+  SYNTHETIC_NINS,
+} from "../lib/identity-providers.js";
 
-// ── Synthetic NIN allowlist (README §13.2, rule #2) ───────────────────────
-const SYNTHETIC_NINS = new Set(["1234 5678 9012", "9876 5432 1098", "1111 2222 3333"]);
+// Re-export for compatibility
+export { SYNTHETIC_NINS };
 
 // ── Zod schemas ───────────────────────────────────────────────────────────
 
@@ -83,26 +88,27 @@ export async function identityRoutes(app: FastifyInstance): Promise<void> {
       if (!parsed.success) throw Errors.validationError(parsed.error.message);
 
       const { nin } = parsed.data;
-
-      // Only synthetic placeholder NINs are accepted (rule #2)
-      const verified = SYNTHETIC_NINS.has(nin);
+      const provider = getIdentityProvider();
+      const result = await provider.verifyNin(nin);
 
       await appendAuditEvent({
         actorId: session.userId,
         actorRole: session.role,
         type: "identity.mock_nin.verify",
-        refId: `nin_check:${verified ? "pass" : "fail"}`,
+        refId: `nin_check:${result.verified ? "pass" : "fail"}`,
       });
 
       // Never log or return the NIN value
       app.log.info(
         { reqId: request.id },
-        `Mock NIN check: ${verified ? "pass" : "fail"}`,
+        `NIN check (${result.provider}): ${result.verified ? "pass" : "fail"}`,
       );
 
       return reply.send({
-        verified,
-        message: verified ? "NIN verified (synthetic)" : "NIN not recognised",
+        verified: result.verified,
+        message: result.message,
+        provider: result.provider,
+        profile: result.profile,
       });
     },
   );
@@ -116,13 +122,8 @@ export async function identityRoutes(app: FastifyInstance): Promise<void> {
       const parsed = FaceCheckBody.safeParse(request.body);
       if (!parsed.success) throw Errors.validationError(parsed.error.message);
 
-      // Simulated face check — always passes in demo (no real biometrics, rule #2)
-      const result = {
-        verified: true,
-        confidence: 0.97,
-        message: "Simulated face check passed (no real biometrics used)",
-        _demo: true,
-      };
+      const provider = getLivenessProvider();
+      const result = await provider.verifyLiveness(parsed.data.imageRef);
 
       await appendAuditEvent({
         actorId: session.userId,
