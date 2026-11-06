@@ -125,16 +125,16 @@ export async function registryRoutes(app: FastifyInstance): Promise<void> {
             sourceKeypair: adminKp,
             contractId: process.env["ISSUER_REGISTRY_ID"] ?? "",
             method: "register",
-            args: {
-              entity: {
+            args: [
+              {
                 address: stellarAddress,
-                role: role === "issuer" ? { Issuer: {} } : { Verifier: {} },
+                role: { tag: role === "issuer" ? "Issuer" : "Verifier" },
                 name,
                 home_domain: homeDomain,
-                status: { Active: {} },
-                registered_at: Math.floor(Date.now() / 1000),
+                status: { tag: "Active" },
+                registered_at: BigInt(Math.floor(Date.now() / 1000)),
               },
-            },
+            ],
           });
           chainTx = result.txHash ?? null;
         }
@@ -201,12 +201,12 @@ export async function registryRoutes(app: FastifyInstance): Promise<void> {
 
         if (adminSecret) {
           const adminKp = Keypair.fromSecret(adminSecret);
-          const sorobanStatus =
+          const sorobanStatusTag =
             status === "active"
-              ? { Active: {} }
+              ? "Active"
               : status === "suspended"
-                ? { Suspended: {} }
-                : { Removed: {} };
+                ? "Suspended"
+                : "Removed";
 
           const result = await submitTransaction({
             rpc,
@@ -214,7 +214,7 @@ export async function registryRoutes(app: FastifyInstance): Promise<void> {
             sourceKeypair: adminKp,
             contractId: process.env["ISSUER_REGISTRY_ID"] ?? "",
             method: "set_status",
-            args: { addr, status: sorobanStatus },
+            args: [addr, { tag: sorobanStatusTag }],
           });
           chainTx = result.txHash ?? null;
         }

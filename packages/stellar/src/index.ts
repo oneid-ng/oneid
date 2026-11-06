@@ -8,10 +8,13 @@
  */
 
 import {
+  Address,
   Operation,
   StrKey,
   TransactionBuilder,
   rpc as SorobanRpc,
+  nativeToScVal,
+  scValToNative,
   type Keypair,
   type Transaction,
   type FeeBumpTransaction,
@@ -535,20 +538,41 @@ export interface SubmitTxOptions {
   sponsorKeypair?: Keypair | undefined;
   contractId: string;
   method: string;
-  /** args ignored in MVP — use generated bindings for type-safe arg encoding */
-  args?: Record<string, unknown>;
+  args?: xdr.ScVal[] | unknown[] | Record<string, unknown>;
   idempotencyKey?: string;
+}
+
+/**
+ * Convert a JS value or Stellar address into an xdr.ScVal.
+ */
+export function serializeScVal(value: unknown): xdr.ScVal {
+  if (value && typeof value === "object" && "switch" in value) {
+    return value as xdr.ScVal;
+  }
+  if (typeof value === "string") {
+    if (StrKey.isValidEd25519PublicKey(value) || StrKey.isValidContract(value)) {
+      return Address.fromString(value).toScVal();
+    }
+  }
+  return nativeToScVal(value);
+}
+
+/**
+ * Convert args array or object into an array of xdr.ScVal for contract invocation.
+ */
+export function toScValArray(
+  args?: xdr.ScVal[] | unknown[] | Record<string, unknown>,
+): xdr.ScVal[] {
+  if (!args) return [];
+  if (Array.isArray(args)) {
+    return args.map((item) => serializeScVal(item));
+  }
+  return [serializeScVal(args)];
 }
 
 /**
  * Build, (optionally fee-bump), sign, and submit a Soroban contract call.
  * Returns txHash and ledger. Uses submitWithRetryAndIdempotency internally.
- *
- * Note: full arg serialisation uses the generated TS bindings in
- * @oneid/contracts-client. This wrapper is for routes that call simple
- * methods where the contracts-client is available. For the MVP demo the
- * raw buildAndSignContractCall with empty args is used (args encoding via
- * the generated Client is done in the indexer and dedicated service layers).
  */
 export async function submitTransaction(
   opts: SubmitTxOptions,
@@ -564,10 +588,11 @@ export async function submitTransaction(
 
   return submitWithRetryAndIdempotency(
     async (): Promise<TransactionResult> => {
+      const scValArgs = toScValArray(opts.args);
       const tx = await buildAndSignContractCall({
         contractId: opts.contractId,
         method: opts.method,
-        args: [],
+        args: scValArgs,
         sourceKeypair: opts.sourceKeypair,
         server: opts.rpc,
         network: opts.network,

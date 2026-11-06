@@ -132,6 +132,20 @@ export async function correctionsRoutes(app: FastifyInstance): Promise<void> {
           const citizenKp = Keypair.fromSecret(citizenSecret);
           const sponsorKp = sponsorSecret ? Keypair.fromSecret(sponsorSecret) : undefined;
 
+          const holderAddr =
+            holder.stellar_address &&
+            (holder.stellar_address.startsWith("G") ||
+              holder.stellar_address.startsWith("C"))
+              ? holder.stellar_address
+              : citizenKp.publicKey();
+
+          const instAddrs = targetAddresses.filter(
+            (a) => a.startsWith("G") || a.startsWith("C"),
+          );
+          if (instAddrs.length === 0) {
+            instAddrs.push(citizenKp.publicKey());
+          }
+
           const result = await submitTransaction({
             rpc,
             network,
@@ -139,6 +153,14 @@ export async function correctionsRoutes(app: FastifyInstance): Promise<void> {
             sponsorKeypair: sponsorKp,
             contractId,
             method: "open",
+            args: [
+              holderAddr,
+              Buffer.from(
+                ticketHash.replace(/^0x/, "").padStart(64, "0").slice(0, 64),
+                "hex",
+              ),
+              instAddrs,
+            ],
             idempotencyKey: `correction:${ticketHash}`,
           });
           chainTx = result.txHash ?? null;
@@ -381,6 +403,19 @@ export async function correctionsRoutes(app: FastifyInstance): Promise<void> {
           const sourceKp = Keypair.fromSecret(instSecret || sponsorSecret);
           const sponsorKp = sponsorSecret ? Keypair.fromSecret(sponsorSecret) : undefined;
 
+          const statusTag =
+            status === "under_review"
+              ? "UnderReview"
+              : status === "applied"
+                ? "Applied"
+                : status === "rejected"
+                  ? "Rejected"
+                  : status === "failed"
+                    ? "Failed"
+                    : status === "partially_applied"
+                      ? "PartiallyApplied"
+                      : "Submitted";
+
           const result = await submitTransaction({
             rpc,
             network,
@@ -388,6 +423,15 @@ export async function correctionsRoutes(app: FastifyInstance): Promise<void> {
             sponsorKeypair: sponsorKp,
             contractId,
             method: "update",
+            args: [
+              sourceKp.publicKey(),
+              Buffer.from(
+                ticket.ticket_hash.replace(/^0x/, "").padStart(64, "0").slice(0, 64),
+                "hex",
+              ),
+              { tag: statusTag },
+              reasonCode ?? null,
+            ],
             idempotencyKey: `outcome:${ticket.ticket_hash}:${instEntity.id}:${status}`,
           });
           chainTx = result.txHash ?? null;

@@ -169,6 +169,13 @@ export async function issuanceRoutes(app: FastifyInstance): Promise<void> {
           const issuerKp = Keypair.fromSecret(issuerSecret);
           const sponsorKp = sponsorSecret ? Keypair.fromSecret(sponsorSecret) : undefined;
 
+          const holderAddress =
+            holder.stellar_address &&
+            (holder.stellar_address.startsWith("G") ||
+              holder.stellar_address.startsWith("C"))
+              ? holder.stellar_address
+              : issuerKp.publicKey();
+
           const result = await submitTransaction({
             rpc,
             network,
@@ -176,6 +183,15 @@ export async function issuanceRoutes(app: FastifyInstance): Promise<void> {
             sponsorKeypair: sponsorKp,
             contractId,
             method: "register",
+            args: [
+              issuerKp.publicKey(),
+              Buffer.from(
+                credentialHash.replace(/^0x/, "").padStart(64, "0").slice(0, 64),
+                "hex",
+              ),
+              holderAddress,
+              BigInt(Math.floor(expiresAt.getTime() / 1000)),
+            ],
             idempotencyKey: `issue:${credentialHash}`,
           });
           chainTx = result.txHash ?? null;
@@ -281,6 +297,10 @@ export async function issuanceRoutes(app: FastifyInstance): Promise<void> {
             sponsorKeypair: sponsorKp,
             contractId,
             method: "revoke",
+            args: [
+              issuerKp.publicKey(),
+              Buffer.from(hash.replace(/^0x/, "").padStart(64, "0").slice(0, 64), "hex"),
+            ],
             idempotencyKey: `revoke:${hash}`,
           });
           chainTx = result.txHash ?? null;

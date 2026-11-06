@@ -279,4 +279,23 @@ describe("@oneid/stellar", () => {
       expect(feeBumpTx.innerTransaction.signatures.length).toBe(1); // Citizen signature present
     });
   });
+
+  describe("Contract Arguments Encoding (Soroban XDR ScVal)", () => {
+    it("converts Stellar addresses, hashes, and primitives to ScVal array", async () => {
+      const { serializeScVal, toScValArray } = await import("./index.js");
+      const kp = Keypair.random();
+      const addrScVal = serializeScVal(kp.publicKey());
+      expect(addrScVal.switch().name).toBe("scvAddress");
+
+      const buf = Buffer.alloc(32, 7);
+      const bufScVal = serializeScVal(buf);
+      expect(bufScVal.switch().name).toBe("scvBytes");
+
+      const argsArray = toScValArray([kp.publicKey(), buf, BigInt(100)]);
+      expect(argsArray.length).toBe(3);
+      expect(argsArray[0]?.switch().name).toBe("scvAddress");
+      expect(argsArray[1]?.switch().name).toBe("scvBytes");
+      expect(argsArray[2]?.switch().name).toBe("scvU64");
+    });
+  });
 });

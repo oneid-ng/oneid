@@ -132,6 +132,18 @@ export async function consentRoutes(app: FastifyInstance): Promise<void> {
           const citizenKp = Keypair.fromSecret(citizenSecret);
           const sponsorKp = sponsorSecret ? Keypair.fromSecret(sponsorSecret) : undefined;
 
+          const validHolder =
+            holder?.stellar_address &&
+            (holder.stellar_address.startsWith("G") ||
+              holder.stellar_address.startsWith("C"))
+              ? holder.stellar_address
+              : citizenKp.publicKey();
+          const validRequester =
+            requesterAddress &&
+            (requesterAddress.startsWith("G") || requesterAddress.startsWith("C"))
+              ? requesterAddress
+              : citizenKp.publicKey();
+
           const result = await submitTransaction({
             rpc,
             network,
@@ -139,6 +151,15 @@ export async function consentRoutes(app: FastifyInstance): Promise<void> {
             sponsorKeypair: sponsorKp,
             contractId,
             method: "grant",
+            args: [
+              validHolder,
+              Buffer.from(
+                receiptHash.replace(/^0x/, "").padStart(64, "0").slice(0, 64),
+                "hex",
+              ),
+              validRequester,
+              BigInt(expiryTs),
+            ],
             idempotencyKey: `consent:${receiptHash}`,
           });
           chainTx = result.txHash ?? null;
@@ -259,6 +280,10 @@ export async function consentRoutes(app: FastifyInstance): Promise<void> {
             sponsorKeypair: sponsorKp,
             contractId,
             method: "withdraw",
+            args: [
+              citizenKp.publicKey(),
+              Buffer.from(hash.replace(/^0x/, "").padStart(64, "0").slice(0, 64), "hex"),
+            ],
             idempotencyKey: `withdraw:${hash}`,
           });
           chainTx = result.txHash ?? null;
