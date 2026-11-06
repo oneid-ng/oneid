@@ -88,8 +88,8 @@ export default function CredentialsPage() {
             issuerDomain: vc.issuerDomain,
             status: vc.status,
             expiresAt: vc.expiresAt,
-            chainTx: vc.chainTx,
-            ledger: vc.ledger,
+            chainTx: vc.chainTx ?? null,
+            ledger: vc.ledger ?? null,
           })),
         );
       } else {

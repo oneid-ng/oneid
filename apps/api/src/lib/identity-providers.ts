@@ -9,7 +9,7 @@ export interface IdentityVerificationResult {
   verified: boolean;
   message: string;
   provider: "synthetic" | "nimc_direct" | "bvn_partner";
-  profile?: Record<string, unknown>;
+  profile?: Record<string, unknown> | undefined;
 }
 
 export interface IdentityVerificationProvider {
@@ -21,7 +21,7 @@ export interface LivenessVerificationResult {
   confidence: number;
   message: string;
   provider: "synthetic" | "external_biometric";
-  _demo?: boolean;
+  _demo?: boolean | undefined;
 }
 
 export interface LivenessVerificationProvider {

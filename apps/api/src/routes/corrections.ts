@@ -404,17 +404,13 @@ export async function correctionsRoutes(app: FastifyInstance): Promise<void> {
           const sponsorKp = sponsorSecret ? Keypair.fromSecret(sponsorSecret) : undefined;
 
           const statusTag =
-            status === "under_review"
-              ? "UnderReview"
-              : status === "applied"
-                ? "Applied"
-                : status === "rejected"
-                  ? "Rejected"
-                  : status === "failed"
-                    ? "Failed"
-                    : status === "partially_applied"
-                      ? "PartiallyApplied"
-                      : "Submitted";
+            status === "applied"
+              ? "Applied"
+              : status === "rejected"
+                ? "Rejected"
+                : status === "failed"
+                  ? "Failed"
+                  : "PartiallyApplied";
 
           const result = await submitTransaction({
             rpc,

@@ -280,7 +280,7 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
           expectedOrigin: origin,
           expectedRPID: rpID,
           credential: {
-            id: existingUser.passkey_credential_id,
+            id: existingUser.passkey_credential_id!,
             publicKey: Buffer.from(existingUser.passkey_public_key, "base64url"),
             counter: existingUser.passkey_counter ?? 0,
           },

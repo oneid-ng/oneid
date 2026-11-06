@@ -14,7 +14,6 @@ import {
   TransactionBuilder,
   rpc as SorobanRpc,
   nativeToScVal,
-  scValToNative,
   type Keypair,
   type Transaction,
   type FeeBumpTransaction,
