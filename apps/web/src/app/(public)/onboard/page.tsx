@@ -87,11 +87,79 @@ export default function OnboardPage() {
     setLoading(true);
     setError(null);
     try {
-      // Login portal as citizen to initialise demo session & zero-XLM wallet
-      await api.auth.loginPortal({
-        role: "citizen",
-        demoKey: "demo-citizen-2026",
-      });
+      const username = syntheticProfile?.fullName
+        ? syntheticProfile.fullName.toLowerCase().replace(/\s+/g, ".")
+        : `citizen.${Date.now()}`;
+
+      let registered = false;
+      if (
+        typeof window !== "undefined" &&
+        window.PublicKeyCredential &&
+        typeof navigator.credentials?.create === "function"
+      ) {
+        try {
+          const options = await api.auth.getRegisterOptions(username);
+          if (options && options.challenge) {
+            const challengeBytes = Uint8Array.from(
+              atob(options.challenge as string),
+              (c) => c.charCodeAt(0),
+            );
+            const userObj = options.user as {
+              id?: string;
+              name?: string;
+              displayName?: string;
+            };
+            const userIdBytes = userObj?.id
+              ? Uint8Array.from(atob(userObj.id), (c) => c.charCodeAt(0))
+              : new TextEncoder().encode(username);
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const credOptions: any = {
+              ...options,
+              challenge: challengeBytes,
+              user: {
+                ...userObj,
+                id: userIdBytes,
+              },
+            };
+
+            const credential = (await navigator.credentials.create({
+              publicKey: credOptions,
+            })) as PublicKeyCredential | null;
+
+            if (credential) {
+              const rawResponse = credential.response as AuthenticatorAttestationResponse;
+              const attestation = {
+                id: credential.id,
+                rawId: btoa(String.fromCharCode(...new Uint8Array(credential.rawId))),
+                type: credential.type,
+                response: {
+                  clientDataJSON: btoa(
+                    String.fromCharCode(...new Uint8Array(rawResponse.clientDataJSON)),
+                  ),
+                  attestationObject: btoa(
+                    String.fromCharCode(...new Uint8Array(rawResponse.attestationObject)),
+                  ),
+                },
+              };
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              await api.auth.verifyRegister(username, attestation as any);
+              registered = true;
+            }
+          }
+        } catch {
+          // In headless test environments or when authenticator is cancelled, fallback
+          registered = false;
+        }
+      }
+
+      if (!registered) {
+        // Fallback demo portal login for testing & environments without passkey hardware
+        await api.auth.loginPortal({
+          role: "citizen",
+          demoKey: "demo-citizen-2026",
+        });
+      }
       setStep(3);
     } catch (err) {
       setError({

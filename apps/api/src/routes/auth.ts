@@ -20,6 +20,7 @@ import {
   generateRegistrationOptions,
   verifyRegistrationResponse,
   generateAuthenticationOptions,
+  verifyAuthenticationResponse,
 } from "@simplewebauthn/server";
 import { z } from "zod";
 import { Errors } from "../plugins/errors.js";
@@ -178,6 +179,10 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
     const credId = Buffer.from(verification.registrationInfo.credential.id).toString(
       "base64url",
     );
+    const pubKey = Buffer.from(
+      verification.registrationInfo.credential.publicKey,
+    ).toString("base64url");
+    const counter = verification.registrationInfo.credential.counter ?? 0;
 
     // Create citizen user record
     const db = getDb();
@@ -186,6 +191,8 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
       .values({
         role: "citizen",
         passkey_credential_id: credId,
+        passkey_public_key: pubKey,
+        passkey_counter: counter,
         synthetic_profile: {
           username,
           _demo_note: "SYNTHETIC DATA — WebAuthn registered citizen",
@@ -262,8 +269,44 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
       throw Errors.unauthenticated("Passkey not registered.");
     }
 
-    // For MVP demo: trust the credential lookup (full assertion verification
-    // requires stored public key; deferred to Phase 3 hardening).
+    // Cryptographic assertion verification when public key and WebAuthn response are present
+    const clientResponse = (response as { response?: unknown })?.response;
+    if (existingUser.passkey_public_key && clientResponse) {
+      try {
+        const verification = await verifyAuthenticationResponse({
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          response: response as any,
+          expectedChallenge,
+          expectedOrigin: origin,
+          expectedRPID: rpID,
+          credential: {
+            id: existingUser.passkey_credential_id,
+            publicKey: Buffer.from(existingUser.passkey_public_key, "base64url"),
+            counter: existingUser.passkey_counter ?? 0,
+          },
+        });
+
+        if (!verification.verified) {
+          throw Errors.unauthenticated(
+            "Passkey assertion signature could not be verified.",
+          );
+        }
+
+        // Update stored counter to prevent replay attacks
+        await db
+          .update(users)
+          .set({ passkey_counter: verification.authenticationInfo.newCounter })
+          .where(eq(users.id, existingUser.id));
+      } catch (err) {
+        if (err instanceof Error && (err as { name?: string }).name === "AppError") {
+          throw err;
+        }
+        throw Errors.unauthenticated(
+          `Passkey assertion verification failed: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      }
+    }
+
     challengeStore.delete(`login:${username}`);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

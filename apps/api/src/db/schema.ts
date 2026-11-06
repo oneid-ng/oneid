@@ -86,6 +86,8 @@ export const users = pgTable("users", {
   role: userRoleEnum("role").notNull(),
   stellar_address: text("stellar_address").unique(),
   passkey_credential_id: text("passkey_credential_id").unique(),
+  passkey_public_key: text("passkey_public_key"),
+  passkey_counter: integer("passkey_counter").default(0),
   synthetic_profile: jsonb("synthetic_profile"),
   created_at: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });

@@ -94,6 +94,26 @@ export class OneIdClient {
           body: JSON.stringify(payload),
         },
       ),
+    getRegisterOptions: (username: string) =>
+      this.request<Record<string, unknown>>("/v1/auth/register/options", {
+        method: "POST",
+        body: JSON.stringify({ username }),
+      }),
+    verifyRegister: (username: string, response: Record<string, unknown>) =>
+      this.request<{ verified: boolean; userId: string }>("/v1/auth/register/verify", {
+        method: "POST",
+        body: JSON.stringify({ username, response }),
+      }),
+    getLoginOptions: (username: string) =>
+      this.request<Record<string, unknown>>("/v1/auth/login/options", {
+        method: "POST",
+        body: JSON.stringify({ username }),
+      }),
+    verifyLogin: (username: string, response: Record<string, unknown>) =>
+      this.request<{ verified: boolean; userId: string }>("/v1/auth/login/verify", {
+        method: "POST",
+        body: JSON.stringify({ username, response }),
+      }),
     getMe: () =>
       this.request<{
         authenticated: boolean;
